@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _0426czz.inm
+MODNAME: apmain
+RUNID: _0426czz
+NEW_RUNID: _0426czz
+OLD_RUNID: _0426czz
+PDF: _0426czz.appdf
+USERNAME: anabera
+XMOD: C:\Program Files\AspenTech\Aspen Plus V11.0\Engine\xeq\apmain
+DBCONN: _0426czz.ads

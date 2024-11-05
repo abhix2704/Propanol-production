@@ -1,0 +1,2136 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WIN-X64                                       JULY 5, 2022        
+ VERSION: 37.0   Build 395                               TUESDAY     
+ INSTALLATION:                                           12:44:25 P.M.       
+
+ THIS COPY OF ASPEN PLUS LICENSED TO ETH ZURICH                      
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           JULY 5, 2022        
+   12:44:25 P.M.                          TUESDAY     
+   INPUT FILE: _0426czz.inm
+   RUN ID : _0426czz
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 37.0 at 12:44:24 Tue Jul 5, 2022
+          3    ;Directory   Runid SYNGAS TO 1-PROPANOL V2
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS SI FLOW='kg/hr' MASS-FLOW='kg/hr' MOLE-FLOW='kmol/hr'  &
+         11            PRESSURE=bar FLUX='cuft/sqft-hr' MASS-FLUX='kg/sqm-hr'  &
+         12            PDROP-PER-HT='mbar/m' PDROP=bar INVERSE-PRES='1/bar'  &
+         13            SHORT-LENGTH=mm
+         14
+         15    DEF-STREAMS CONVEN ALL
+         16
+         17    MODEL-OPTION
+         18
+         19    DATABANKS 'APV110 PURE37' / 'APV110 AQUEOUS' / 'APV110 SOLIDS' &
+         20             / 'APV110 INORGANIC' / 'APESV110 AP-EOS' /  &
+         21            'NISTV110 NIST-TRC' / NOASPENPCD
+         22
+         23    PROP-SOURCES 'APV110 PURE37' / 'APV110 AQUEOUS' /  &
+         24            'APV110 SOLIDS' / 'APV110 INORGANIC' / 'APESV110 AP-EOS' &
+         25             / 'NISTV110 NIST-TRC'
+         26
+         27    COMPONENTS
+         28        CO2 CO2 /
+         29        H2 H2 /
+         30        CO CO /
+         31        H2O H2O /
+         32        ETHYLENE C2H4 /
+         33        ETHANE C2H6 /
+         34        PROPANAL C3H6O-3 /
+         35        PROPANOL C3H8O-1
+         36
+         37    SOLVE
+         38        RUN-MODE MODE=SIM
+         39
+         40    FLOWSHEET
+         41        BLOCK B1 IN=S1 S2 S15 OUT=S3
+         42        BLOCK B2 IN=S3 S4 OUT=S5
+         43        BLOCK B3 IN=S5 OUT=S6
+         44        BLOCK B4 IN=S6 OUT=S7
+         45        BLOCK B5 IN=S7 OUT=S8 S9
+         46        BLOCK B9 IN=S8 OUT=S15
+         47        BLOCK B8 IN=S9 OUT=S12
+         48        BLOCK B11 IN=S12 OUT=S13 S14
+         49        BLOCK B12 IN=S14 OUT=S16
+         50        BLOCK B16 IN=S18 OUT=S19
+         51        BLOCK B17 IN=S16 S19 OUT=S20
+         52        BLOCK B18 IN=S20 OUT=S21
+         53        BLOCK B19 IN=S21 OUT=S22
+         54
+         55    PROPERTIES UNIQUAC
+         56
+         57    PROP-DATA UNIQ-1
+         58        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         59            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         60        PROP-LIST UNIQ
+         61        BPVAL H2O PROPANAL 0.0 -271.7981000 0.0 0.0 47.50000000  &
+         62            69.00000000 0.0
+         63        BPVAL PROPANAL H2O 0.0 -99.20640000 0.0 0.0 47.50000000  &
+         64            69.00000000 0.0
+         65        BPVAL H2O PROPANOL -2.333000000 600.4906000 0.0 0.0  &
+         66            25.00000000 100.0000000 0.0
+         67        BPVAL PROPANOL H2O 1.766800000 -651.2462000 0.0 0.0  &
+         68            25.00000000 100.0000000 0.0
+         69
+         70    STREAM S1
+         71        SUBSTREAM MIXED TEMP=298. PRES=17.
+         72        MOLE-FLOW CO2 189.846 / CO 1810.15
+         73
+         74    STREAM S2
+         75        SUBSTREAM MIXED TEMP=298. PRES=17.
+         76        MOLE-FLOW H2 1923.61
+         77
+         78    STREAM S4
+         79        SUBSTREAM MIXED TEMP=298. PRES=17.
+         80        MOLE-FLOW ETHYLENE 2008.93
+         81
+         82    STREAM S18
+         83        SUBSTREAM MIXED TEMP=298. PRES=17.
+         84        MOLE-FLOW H2 1727.8684562
+         85
+         86    BLOCK B1 MIXER
+         87        PARAM
+         88
+         89    BLOCK B2 MIXER
+         90        PARAM
+         91
+         92    BLOCK B17 MIXER
+         93        PARAM
+         94
+         95    BLOCK B4 HEATER
+         96        PARAM TEMP=278. PRES=10. DPPARMOPT=NO
+         97
+         98    BLOCK B8 HEATER
+         99        PARAM TEMP=333. PRES=10. DPPARMOPT=NO
+        100
+        101    BLOCK B18 HEATER
+        102        PARAM TEMP=448. PRES=2.5 DPPARMOPT=NO
+        103
+        104    BLOCK B5 FLASH2
+        105        PARAM TEMP=278. PRES=10.
+        106
+        107    BLOCK B11 DSTWU
+        108        PARAM LIGHTKEY=ETHANE RECOVL=0.999 HEAVYKEY=PROPANAL  &
+        109            RECOVH=0.001 PTOP=6. PBOT=6. RDV=1.0 NSTAGE=15
+        110
+        111    BLOCK B3 RSTOIC
+        112        PARAM TEMP=373. PRES=10.
+        113        STOIC 1 MIXED ETHYLENE -1. / CO -1. / H2 -1. /  &
+        114            PROPANAL 1.
+        115        STOIC 2 MIXED ETHYLENE -1. / H2 -1. / ETHANE 1.
+        116        CONV 1 MIXED ETHYLENE 0.81
+        117        CONV 2 MIXED ETHYLENE 0.09
+        118
+        119    BLOCK B19 RPLUG
+        120        PARAM TYPE=T-SPEC LENGTH=19.69 DIAM=3.939
+        121        REACTIONS RXN-IDS=R-1
+        122
+        123    BLOCK B9 COMPR
+        124        PARAM TYPE=ISENTROPIC PRES=17. SB-MAXIT=30 SB-TOL=0.0001
+        125
+        126    BLOCK B12 VALVE
+        127        PARAM P-OUT=2.5
+        128
+        129    BLOCK B16 VALVE
+        130        PARAM P-OUT=2.5
+        131
+        132    DESIGN-SPEC DS-1
+        133        DEFINE CONDTEMP STREAM-VAR STREAM=S13 SUBSTREAM=MIXED  &
+        134            VARIABLE=TEMP UOM="K"
+        135        SPEC "CONDTEMP" TO "298"
+        136        TOL-SPEC "1E-1"
+        137        VARY BLOCK-VAR BLOCK=B11 VARIABLE=RECOVL SENTENCE=PARAM
+        138        LIMITS "0.9" "0.9999"
+        139
+        140    DESIGN-SPEC DS-2
+        141        DEFINE REBTEM STREAM-VAR STREAM=S14 SUBSTREAM=MIXED  &
+        142            VARIABLE=TEMP UOM="K"
+        143        SPEC "REBTEM" TO "386"
+        144        TOL-SPEC "1E-1"
+        145        VARY BLOCK-VAR BLOCK=B8 VARIABLE=TEMP SENTENCE=PARAM UOM="K"
+        146        LIMITS "278" "573"
+        147
+        148    EO-CONV-OPTI
+        149
+        150    SENSITIVITY S-1
+        151        DEFINE REBDUTY BLOCK-VAR BLOCK=B11 VARIABLE=REB-DUTY  &
+        152            SENTENCE=RESULTS UOM="kJ/hr"
+        153        DEFINE CONDDUTY BLOCK-VAR BLOCK=B11 VARIABLE=COND-DUTY  &
+        154            SENTENCE=RESULTS UOM="kJ/hr"
+        155        DEFINE CONDTEMP STREAM-VAR STREAM=S13 SUBSTREAM=MIXED  &
+        156            VARIABLE=TEMP UOM="K"
+        157        DEFINE REBTEMP STREAM-VAR STREAM=S14 SUBSTREAM=MIXED  &
+        158            VARIABLE=TEMP UOM="K"
+        159        TABULATE 1 "REBDUTY"
+        160        TABULATE 2 "CONDDUTY"
+        161        TABULATE 3 "CONDTEMP"
+        162        TABULATE 4 "REBTEMP"
+        163        VARY BLOCK-VAR BLOCK=B8 VARIABLE=TEMP SENTENCE=PARAM UOM="K"
+        164        RANGE OPT-LIST=RANGE LOWER="323" UPPER="523"  &
+        165            INCR="10.000000"
+        166        VARY BLOCK-VAR BLOCK=B11 VARIABLE=PTOP SENTENCE=PARAM UOM= &
+        167            "bar"
+        168        RANGE OPT-LIST=RANGE LOWER="4" UPPER="10" INCR="1"
+        169        VARY BLOCK-VAR BLOCK=B11 VARIABLE=NSTAGE SENTENCE=PARAM
+        170        RANGE OPT-LIST=RANGE LOWER="7" UPPER="20" INCR="1"
+        171
+        172    CONV-OPTIONS
+        173        PARAM TOL=0.01 SPEC-METHOD=NEWTON COMB-METHOD=NEWTON  &
+        174            MSPEC-METHOD=NEWTON
+        175        WEGSTEIN MAXIT=9999
+        176        NEWTON MAXIT=9999
+        177
+        178    STREAM-REPOR MOLEFLOW
+        179
+        180    PROPERTY-REP PCES
+        181
+        182    REACTIONS R-1 GENERAL
+        183        REAC-DATA 1 NAME=HYDRO REAC-CLASS=POWERLAW PHASE=V  &
+        184            CBASIS=PARTIALPRES REVERSIBLE=YES
+        185        RATE-CON 1 PRE-EXP=175.91 ACT-ENERGY=7.81 <kJ/mol>
+        186        STOIC 1 MIXED PROPANAL -1. / H2 -1. / PROPANOL 1.
+        187        DFORCE-EXP 1 MIXED PROPANAL 1. / MIXED H2 -0.5 / MIXED  &
+        188            PROPANOL 0.
+        189        REAC-ACT 1
+        190
+        191    DISABLE
+        192        SENSITIVITY S-1
+        193        DESIGN-SPEC DS-1 DS-2
+        194    ;
+        195    ;
+        196    ;
+        197    ;
+        198    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV110 : (DATAVERSION - 37.0.0.22)                         
+      SQLLOCALDB.APV110 : (DATAVERSION - 37.0.0.27)                           
+      SQLLOCALDB.FACTV110 : (DATAVERSION - 37.0.0.11)                         
+      SQLLOCALDB.NISTV110 : (DATAVERSION - 37.0.0.27)                         
+
+      INFORMATION WHILE CHECKING INPUT SPECIFICATIONS                           
+      BLOCK NAME: B19    MODEL NAME: RPLUG                     (ZURE04.21)      
+      THE REACTOR TYPE IS "SPECIFIED TEMPERATURE" AND NO TEMPERATURE            
+      IS GIVEN WITH A "T-SPEC" SENTENCE. THE REACTOR TEMPERATURE                
+      WILL BE SET TO THE (MIXED) INLET TEMPERATURE.                             
+
+
+ 
+ DESIGN SPEC: DS-1 WILL BE INTERPRETED 
+ DESIGN SPEC: DS-2 WILL BE INTERPRETED 
+ SENSITIVITY BLOCK: S-1 WILL BE INTERPRETED 
+ 
+
+ PDF updated                                                                      TIME =      1.85
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   S2         ----       B1             S1         ----       B1      
+   S4         ----       B2             S18        ----       B16     
+   S3         B1         B2             S5         B2         B3      
+   S6         B3         B4             S7         B4         B5      
+   S8         B5         B9             S9         B5         B8      
+   S15        B9         B1             S12        B8         B11     
+   S13        B11        ----           S14        B11        B12     
+   S16        B12        B17            S19        B16        B17     
+   S20        B17        B18            S21        B18        B19     
+   S22        B19        ----                                         
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B1           S1 S2 S15                      S3                          
+   B2           S3 S4                          S5                          
+   B3           S5                             S6                          
+   B4           S6                             S7                          
+   B5           S7                             S8 S9                       
+   B9           S8                             S15                         
+   B8           S9                             S12                         
+   B11          S12                            S13 S14                     
+   B12          S14                            S16                         
+   B16          S18                            S19                         
+   B17          S16 S19                        S20                         
+   B18          S20                            S21                         
+   B19          S21                            S22                         
+
+      BLOCK $OLVER01 (METHOD: WEGSTEIN) HAS BEEN DEFINED TO CONVERGE
+               STREAMS: S15
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B16 
+      $OLVER01 B1 B2 B3 B4 B5 B9 
+      (RETURN $OLVER01) 
+      B8 B11 B12 B17 B18 B19 
+
+Calculations begin                                                              time      0.04
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.04
+
+      ENTHALPY CALCULATION FOR INLET STREAM S18 OF BLOCK B16                      TIME =      0.04
+      KODE = 2  NTRIAL =   1  T = 298.0000  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B16      MODEL: VALVE                                             TIME =      0.04
+      NO. TEMP ITER =   11     TEMP =  298.000    
+      KODE = 1  NTRIAL =   2  T = 298.0000  P =  250000.      V =  1.00000      Q =  0.00000    
+      OUTLET PRES =   0.2500E+06 PRES DROP =   0.1450E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.04
+      ITER   0 For Tear Streams: S15
+
+      ENTHALPY CALCULATION FOR INLET STREAM S1 OF BLOCK B1                        TIME =      0.04
+      KODE = 2  NTRIAL =   2  T = 298.0000  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM S2 OF BLOCK B1                        TIME =      0.04
+      KODE = 2  NTRIAL =   1  T = 298.0000  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.04
+      NO. TEMP ITER =    4     TEMP =  298.000    
+      KODE = 1  NTRIAL =   4  T = 298.0001  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM S4 OF BLOCK B2                        TIME =      0.04
+      KODE = 2  NTRIAL =   1  T = 298.0000  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.04
+      NO. TEMP ITER =    5     TEMP =  298.000    
+      KODE = 1  NTRIAL =   3  T = 298.0000  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.04
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V = 0.614181      Q =-6.712020E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 278.0000  P = 1.000000E+06  V = 0.235863      Q =-1.259885E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 278.0000  P = 1.000000E+06  V = 0.235863      Q =-2.584178E-09
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.04
+      OUTLET TEMP =   326.7       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.2962E+06   BRAKE HP =  0.2962E+06
+      ISENTR TEMP =   313.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.2133E+06  HP =  0.4846E+05
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.04
+      ITER   1 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    3     TEMP =  326.670    
+      KPHASE =    1 KODE =    1 T =  326.670     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    1:   7 VARS NOT CONVERGED, MAX ERR/TOL     0.10000E+07    TIME =      0.04
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.04
+      NO. TEMP ITER =    4     TEMP =  302.639    
+      KODE = 1  NTRIAL =   4  T = 302.6390  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.04
+      NO. TEMP ITER =    5     TEMP =  300.844    
+      KODE = 1  NTRIAL =   4  T = 300.8444  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.04
+      KODE = 2  NTRIAL =   1  T = 373.0000  P = 1.000000E+06  V = 0.715070      Q =-6.954470E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.288705      Q =-1.507978E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.04
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.288705      Q =-2.393763E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.04
+      OUTLET TEMP =   325.9       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4194E+06   BRAKE HP =  0.4194E+06
+      ISENTR TEMP =   312.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3020E+06  HP =  0.9726E+05
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.04
+      ITER   2 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    7     TEMP =  748.125    
+      KPHASE =    1 KODE =    1 T =  748.125     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    2:   8 VARS NOT CONVERGED, MAX ERR/TOL      73.239        TIME =      0.04
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.04
+      NO. TEMP ITER =    5     TEMP =  464.265    
+      KODE = 1  NTRIAL =   5  T = 464.2653  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.04
+      NO. TEMP ITER =    5     TEMP =  405.181    
+      KODE = 1  NTRIAL =   4  T = 405.1805  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.04
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V = 0.897373      Q =-7.432850E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 278.0000  P = 1.000000E+06  V = 0.384380      Q =-1.938840E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 278.0000  P = 1.000000E+06  V = 0.384380      Q = 4.359315E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.04
+      OUTLET TEMP =   324.2       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.6766E+06   BRAKE HP =  0.6766E+06
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4872E+06  HP =  0.2536E+06
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.05
+      ITER   3 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    8     TEMP =  149.154    
+      KPHASE =    1 KODE =    1 T =  149.154     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    3:   8 VARS NOT CONVERGED, MAX ERR/TOL      31.362        TIME =      0.05
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.05
+      KODE = 1  NTRIAL =   5  T = 247.6481  P = 1.700000E+06  V = 0.997616      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    4     TEMP =  262.130    
+      KODE = 1  NTRIAL =   3  T = 262.1303  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V = 0.954480      Q =-6.545351E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.428003      Q =-2.184630E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.428003      Q =-1.623524E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.05
+      OUTLET TEMP =   325.0       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.8425E+06   BRAKE HP =  0.8425E+06
+      ISENTR TEMP =   312.1      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6066E+06  HP =  0.3929E+06
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.05
+      ITER   4 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    6     TEMP =  520.892    
+      KPHASE =    1 KODE =    1 T =  520.892     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    4:   8 VARS NOT CONVERGED, MAX ERR/TOL     -85.989        TIME =      0.05
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    5     TEMP =  386.627    
+      KODE = 1  NTRIAL =   5  T = 386.6267  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    5     TEMP =  357.305    
+      KODE = 1  NTRIAL =   4  T = 357.3053  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.05
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.9944265"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V = 0.980341      Q =-6.894026E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.05
+      KODE = 2  NTRIAL =   3  T = 278.0000  P = 1.000000E+06  V = 0.438319      Q =-2.183819E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.05
+      KODE = 2  NTRIAL =   3  T = 278.0000  P = 1.000000E+06  V = 0.438319      Q =-4.822697E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.05
+      OUTLET TEMP =   324.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.8538E+06   BRAKE HP =  0.8538E+06
+      ISENTR TEMP =   311.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6147E+06  HP =  0.4037E+06
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.05
+      ITER   5 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    6     TEMP =  264.887    
+      KPHASE =    1 KODE =    1 T =  264.887     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    5:   6 VARS NOT CONVERGED, MAX ERR/TOL     -100.00        TIME =      0.05
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    4     TEMP =  285.922    
+      KODE = 1  NTRIAL =   3  T = 285.9216  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.05
+      NO. TEMP ITER =    4     TEMP =  289.780    
+      KODE = 1  NTRIAL =   4  T = 289.7800  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.05
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.9828841"                                                   
+      KODE = 2  NTRIAL =   1  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.289258E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.462151      Q =-2.237204E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.05
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.462151      Q = 1.662748E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.05
+      OUTLET TEMP =   324.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.9312E+06   BRAKE HP =  0.9312E+06
+      ISENTR TEMP =   311.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6704E+06  HP =  0.4802E+06
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.06
+      ITER   6 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  265.483    
+      KPHASE =    1 KODE =    1 T =  265.483     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    6:   8 VARS NOT CONVERGED, MAX ERR/TOL     -100.00        TIME =      0.06
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.06
+      NO. TEMP ITER =    4     TEMP =  285.377    
+      KODE = 1  NTRIAL =   3  T = 285.3768  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.06
+      NO. TEMP ITER =    4     TEMP =  289.305    
+      KODE = 1  NTRIAL =   4  T = 289.3050  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.06
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.9684624"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.237991E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.06
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.486644      Q =-2.250842E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.06
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.486644      Q =-1.737907E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.06
+      OUTLET TEMP =   324.2       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1024E+07   BRAKE HP =  0.1024E+07
+      ISENTR TEMP =   311.5      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7376E+06  HP =  0.5815E+06
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.06
+      ITER   7 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    7     TEMP =  700.905    
+      KPHASE =    1 KODE =    1 T =  700.905     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    7:   6 VARS NOT CONVERGED, MAX ERR/TOL      14.714        TIME =      0.07
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.07
+      NO. TEMP ITER =    5     TEMP =  494.369    
+      KODE = 1  NTRIAL =   5  T = 494.3691  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.07
+      NO. TEMP ITER =    5     TEMP =  432.433    
+      KODE = 1  NTRIAL =   5  T = 432.4335  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.07
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.9558436"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-7.428637E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.07
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.503727      Q =-2.262404E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.07
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.503727      Q = 1.792574E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.07
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1094E+07   BRAKE HP =  0.1094E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7877E+06  HP =  0.6629E+06
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.07
+      ITER   8 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    7     TEMP =  10.0000    
+      KPHASE =    1 KODE =    1 T =  10.0000     P = 1.700000E+06 Q =  0.00000    
+
+  *** SEVERE ERROR WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER01" (MODEL:        
+      "WEGSTEIN")                                              (SFINAL.1)       
+      SINGLE PHASE TEMPERATURE CALCULATIONS FAILED IN  7  ITERATIONS. FINAL     
+      TEMPERATURE IS  10.0000  FINAL ENTHALPY IS  -1.5426D+08  SPECIFIED        
+      ENTHALPY IS  -1.5771D+08   ERRORS OCCURRED IN FLASH CALCULATIONS FOR TEAR 
+      STREAM  S15 .                                                             
+
+  LOOP $OLVER01 ITER    8:   7 VARS NOT CONVERGED, MAX ERR/TOL     -12.251        TIME =      0.07
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.07
+      KODE = 1  NTRIAL =   7  T = 198.2931  P = 1.700000E+06  V = 0.853988      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.07
+      KODE = 1  NTRIAL =   7  T = 215.8955  P = 1.700000E+06  V = 0.898715      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.07
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.8920117"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.271784E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.07
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.573660      Q =-2.303710E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.07
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.573660      Q = 2.039673E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.07
+      OUTLET TEMP =   325.4       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1419E+07   BRAKE HP =  0.1419E+07
+      ISENTR TEMP =   312.4      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1022E+07  HP =  0.1114E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.07
+      ITER   9 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    6     TEMP =  160.796    
+      KPHASE =    1 KODE =    1 T =  160.796     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER    9:   7 VARS NOT CONVERGED, MAX ERR/TOL      9.4588        TIME =      0.07
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.07
+      KODE = 1  NTRIAL =   5  T = 237.4153  P = 1.700000E+06  V = 0.991818      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.07
+      KODE = 1  NTRIAL =   5  T = 251.9772  P = 1.700000E+06  V = 0.995690      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.07
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.8596286"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.781230E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.07
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.624520      Q =-2.342977E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.07
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.624520      Q = 2.276598E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.07
+      OUTLET TEMP =   326.0       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1726E+07   BRAKE HP =  0.1726E+07
+      ISENTR TEMP =   312.9      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1243E+07  HP =  0.1647E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.07
+      ITER  10 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  339.941    
+      KPHASE =    1 KODE =    1 T =  339.941     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   10:   7 VARS NOT CONVERGED, MAX ERR/TOL      23.164        TIME =      0.08
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.08
+      NO. TEMP ITER =    4     TEMP =  321.215    
+      KODE = 1  NTRIAL =   4  T = 321.2148  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.08
+      NO. TEMP ITER =    4     TEMP =  315.290    
+      KODE = 1  NTRIAL =   4  T = 315.2903  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.08
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.8542894"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.333985E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.08
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.660567      Q =-2.387865E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.08
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.660567      Q = 2.495201E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.08
+      OUTLET TEMP =   326.6       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.2002E+07   BRAKE HP =  0.2002E+07
+      ISENTR TEMP =   313.3      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1442E+07  HP =  0.2215E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.08
+      ITER  11 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  282.818    
+      KPHASE =    1 KODE =    1 T =  282.818     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   11:   7 VARS NOT CONVERGED, MAX ERR/TOL      17.084        TIME =      0.08
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.08
+      NO. TEMP ITER =    4     TEMP =  289.224    
+      KODE = 1  NTRIAL =   3  T = 289.2239  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.08
+      NO. TEMP ITER =    4     TEMP =  291.317    
+      KODE = 1  NTRIAL =   3  T = 291.3167  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.08
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.8465578"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.055549E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.08
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.685487      Q =-2.480108E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.08
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.685487      Q =-5.472563E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.08
+      OUTLET TEMP =   327.1       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.2280E+07   BRAKE HP =  0.2280E+07
+      ISENTR TEMP =   313.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1641E+07  HP =  0.2869E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.08
+      ITER  12 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  304.133    
+      KPHASE =    1 KODE =    1 T =  304.133     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   12:   6 VARS NOT CONVERGED, MAX ERR/TOL     -33.742        TIME =      0.08
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.08
+      NO. TEMP ITER =    4     TEMP =  301.704    
+      KODE = 1  NTRIAL =   3  T = 301.7043  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.09
+      NO. TEMP ITER =    4     TEMP =  300.854    
+      KODE = 1  NTRIAL =   3  T = 300.8545  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.09
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.8377261"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.120057E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.09
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.716501      Q =-2.476819E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.09
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.716501      Q =-2.942497E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.09
+      OUTLET TEMP =   327.4       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.2563E+07   BRAKE HP =  0.2563E+07
+      ISENTR TEMP =   313.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1845E+07  HP =  0.3627E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.09
+      ITER  13 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  315.194    
+      KPHASE =    1 KODE =    1 T =  315.194     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   13:   6 VARS NOT CONVERGED, MAX ERR/TOL      25.738        TIME =      0.09
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.09
+      NO. TEMP ITER =    4     TEMP =  308.676    
+      KODE = 1  NTRIAL =   3  T = 308.6759  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.09
+      NO. TEMP ITER =    4     TEMP =  306.295    
+      KODE = 1  NTRIAL =   3  T = 306.2948  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.09
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.8274425"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.155144E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.09
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.723509      Q =-2.520328E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.09
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.723509      Q =-6.102159E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.09
+      OUTLET TEMP =   327.1       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.2683E+07   BRAKE HP =  0.2683E+07
+      ISENTR TEMP =   313.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.1932E+07  HP =  0.3975E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.09
+      ITER  14 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  449.210    
+      KPHASE =    1 KODE =    1 T =  449.210     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   14:   6 VARS NOT CONVERGED, MAX ERR/TOL      8.4534        TIME =      0.09
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.09
+      NO. TEMP ITER =    5     TEMP =  404.069    
+      KODE = 1  NTRIAL =   5  T = 404.0689  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.09
+      NO. TEMP ITER =    5     TEMP =  382.904    
+      KODE = 1  NTRIAL =   4  T = 382.9043  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.09
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.7722119"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-7.037812E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.09
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.754315      Q =-2.660875E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.09
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.754315      Q =-3.513078E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.09
+      OUTLET TEMP =   325.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.3215E+07   BRAKE HP =  0.3215E+07
+      ISENTR TEMP =   312.5      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.2315E+07  HP =  0.5717E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.09
+      ITER  15 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  382.385    
+      KPHASE =    1 KODE =    1 T =  382.385     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   15:   7 VARS NOT CONVERGED, MAX ERR/TOL      15.469        TIME =      0.09
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    5     TEMP =  358.535    
+      KODE = 1  NTRIAL =   4  T = 358.5353  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    5     TEMP =  347.385    
+      KODE = 1  NTRIAL =   4  T = 347.3847  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.10
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.7321212"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.546662E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.10
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.771648      Q =-2.762384E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.10
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.771648      Q =-3.835279E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.10
+      OUTLET TEMP =   324.9       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.3588E+07   BRAKE HP =  0.3588E+07
+      ISENTR TEMP =   312.0      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.2583E+07  HP =  0.7126E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.10
+      ITER  16 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  304.439    
+      KPHASE =    1 KODE =    1 T =  304.439     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   16:   7 VARS NOT CONVERGED, MAX ERR/TOL      10.203        TIME =      0.10
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    4     TEMP =  302.643    
+      KODE = 1  NTRIAL =   3  T = 302.6427  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    4     TEMP =  301.837    
+      KODE = 1  NTRIAL =   4  T = 301.8370  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.10
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.7023548"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.874737E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.10
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.780858      Q =-2.870513E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.10
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.780858      Q =-4.096351E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.10
+      OUTLET TEMP =   324.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.3876E+07   BRAKE HP =  0.3876E+07
+      ISENTR TEMP =   311.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.2791E+07  HP =  0.8321E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.10
+      ITER  17 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  350.797    
+      KPHASE =    1 KODE =    1 T =  350.797     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   17:   6 VARS NOT CONVERGED, MAX ERR/TOL     -17.229        TIME =      0.11
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.11
+      NO. TEMP ITER =    5     TEMP =  337.169    
+      KODE = 1  NTRIAL =   4  T = 337.1692  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.11
+      NO. TEMP ITER =    5     TEMP =  330.595    
+      KODE = 1  NTRIAL =   4  T = 330.5949  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.12
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6806659"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.259497E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.792784      Q =-2.889641E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.792784      Q = 1.282023E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.12
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4104E+07   BRAKE HP =  0.4104E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.2955E+07  HP =  0.9332E+07
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.12
+      ITER  18 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  356.437    
+      KPHASE =    1 KODE =    1 T =  356.437     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   18:   6 VARS NOT CONVERGED, MAX ERR/TOL      10.723        TIME =      0.12
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.12
+      NO. TEMP ITER =    5     TEMP =  341.905    
+      KODE = 1  NTRIAL =   4  T = 341.9045  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.12
+      NO. TEMP ITER =    5     TEMP =  334.731    
+      KODE = 1  NTRIAL =   4  T = 334.7310  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.12
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6616206"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.305242E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.798612      Q =-2.933652E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.798612      Q =-1.767401E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.12
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4275E+07   BRAKE HP =  0.4275E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3078E+07  HP =  0.1012E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.12
+      ITER  19 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  346.429    
+      KPHASE =    1 KODE =    1 T =  346.429     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   19:   5 VARS NOT CONVERGED, MAX ERR/TOL      4.0086        TIME =      0.12
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.12
+      NO. TEMP ITER =    5     TEMP =  334.608    
+      KODE = 1  NTRIAL =   4  T = 334.6080  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.12
+      NO. TEMP ITER =    5     TEMP =  328.758    
+      KODE = 1  NTRIAL =   4  T = 328.7577  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.12
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6467569"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.198327E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.803565      Q =-2.969622E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.803565      Q = 9.086319E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.12
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4423E+07   BRAKE HP =  0.4423E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3185E+07  HP =  0.1084E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.12
+      ITER  20 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  316.412    
+      KPHASE =    1 KODE =    1 T =  316.412     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   20:   3 VARS NOT CONVERGED, MAX ERR/TOL      2.1281        TIME =      0.12
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.12
+      NO. TEMP ITER =    4     TEMP =  311.904    
+      KODE = 1  NTRIAL =   3  T = 311.9041  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.12
+      NO. TEMP ITER =    4     TEMP =  309.722    
+      KODE = 1  NTRIAL =   3  T = 309.7220  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.12
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6346872"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.886500E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.808294      Q =-2.995898E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.12
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.808294      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.12
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4556E+07   BRAKE HP =  0.4556E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3281E+07  HP =  0.1150E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.13
+      ITER  21 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  344.312    
+      KPHASE =    1 KODE =    1 T =  344.312     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   21:   4 VARS NOT CONVERGED, MAX ERR/TOL      2.2837        TIME =      0.13
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    5     TEMP =  333.469    
+      KODE = 1  NTRIAL =   4  T = 333.4694  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    5     TEMP =  328.003    
+      KODE = 1  NTRIAL =   4  T = 328.0029  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.13
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6243579"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.160013E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.13
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.812426      Q =-3.021891E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.13
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.812426      Q =-4.755717E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.13
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4681E+07   BRAKE HP =  0.4681E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3370E+07  HP =  0.1214E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.13
+      ITER  22 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  337.496    
+      KPHASE =    1 KODE =    1 T =  337.496     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   22:   4 VARS NOT CONVERGED, MAX ERR/TOL      2.6909        TIME =      0.13
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    4     TEMP =  328.374    
+      KODE = 1  NTRIAL =   4  T = 328.3742  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    4     TEMP =  323.768    
+      KODE = 1  NTRIAL =   4  T = 323.7679  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.13
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6153564"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.078488E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.13
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.816127      Q =-3.047213E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.13
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.816127      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.13
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4799E+07   BRAKE HP =  0.4799E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3455E+07  HP =  0.1276E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.13
+      ITER  23 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  328.430    
+      KPHASE =    1 KODE =    1 T =  328.430     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   23:   4 VARS NOT CONVERGED, MAX ERR/TOL      2.4858        TIME =      0.13
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    4     TEMP =  321.491    
+      KODE = 1  NTRIAL =   3  T = 321.4914  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    4     TEMP =  317.990    
+      KODE = 1  NTRIAL =   4  T = 317.9896  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.13
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6073743"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.968357E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.13
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.818197      Q =-3.088637E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.13
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.818197      Q = 4.952888E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.13
+      OUTLET TEMP =   324.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.4910E+07   BRAKE HP =  0.4910E+07
+      ISENTR TEMP =   311.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3535E+07  HP =  0.1335E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.13
+      ITER  24 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  289.090    
+      KPHASE =    1 KODE =    1 T =  289.090     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   24:   4 VARS NOT CONVERGED, MAX ERR/TOL     -8.7730        TIME =      0.13
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.13
+      NO. TEMP ITER =    4     TEMP =  291.094    
+      KODE = 1  NTRIAL =   3  T = 291.0942  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    4     TEMP =  292.083    
+      KODE = 1  NTRIAL =   3  T = 292.0834  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.16
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.6008501"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.491977E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.830897      Q =-3.130532E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.16
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.830897      Q = 5.231290E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.16
+      OUTLET TEMP =   324.4       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.5267E+07   BRAKE HP =  0.5267E+07
+      ISENTR TEMP =   311.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.3792E+07  HP =  0.1536E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.16
+      ITER  25 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  284.285    
+      KPHASE =    1 KODE =    1 T =  284.285     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   25:   5 VARS NOT CONVERGED, MAX ERR/TOL      9.6397        TIME =      0.16
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    4     TEMP =  287.249    
+      KODE = 1  NTRIAL =   3  T = 287.2491  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    4     TEMP =  288.732    
+      KODE = 1  NTRIAL =   3  T = 288.7318  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.16
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5990104"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.379947E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.839145      Q =-3.195086E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.16
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.839145      Q = 5.488596E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.16
+      OUTLET TEMP =   324.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.5581E+07   BRAKE HP =  0.5581E+07
+      ISENTR TEMP =   311.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4019E+07  HP =  0.1725E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.16
+      ITER  26 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  285.927    
+      KPHASE =    1 KODE =    1 T =  285.927     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   26:   6 VARS NOT CONVERGED, MAX ERR/TOL      6.3901        TIME =      0.16
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    4     TEMP =  288.421    
+      KODE = 1  NTRIAL =   3  T = 288.4209  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    4     TEMP =  289.693    
+      KODE = 1  NTRIAL =   3  T = 289.6929  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.16
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5965771"                                                   
+      KODE = 2  NTRIAL =   2  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.338593E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.844920      Q =-3.280487E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.16
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.844920      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.16
+      OUTLET TEMP =   324.7       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.5887E+07   BRAKE HP =  0.5887E+07
+      ISENTR TEMP =   311.9      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4239E+07  HP =  0.1919E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.16
+      ITER  27 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  432.213    
+      KPHASE =    1 KODE =    1 T =  432.213     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   27:   5 VARS NOT CONVERGED, MAX ERR/TOL     -8.7095        TIME =      0.16
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    5     TEMP =  408.599    
+      KODE = 1  NTRIAL =   4  T = 408.5987  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.17
+      NO. TEMP ITER =    5     TEMP =  394.371    
+      KODE = 1  NTRIAL =   4  T = 394.3712  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.17
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5937925"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-7.346849E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.17
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.853865      Q =-3.303480E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.17
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.853865      Q =-1.195797E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.17
+      OUTLET TEMP =   324.8       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.6189E+07   BRAKE HP =  0.6189E+07
+      ISENTR TEMP =   312.0      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4456E+07  HP =  0.2120E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.17
+      ITER  28 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  289.848    
+      KPHASE =    1 KODE =    1 T =  289.848     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   28:   6 VARS NOT CONVERGED, MAX ERR/TOL      9.3027        TIME =      0.17
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.17
+      NO. TEMP ITER =    4     TEMP =  291.427    
+      KODE = 1  NTRIAL =   3  T = 291.4274  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.17
+      NO. TEMP ITER =    4     TEMP =  292.255    
+      KODE = 1  NTRIAL =   3  T = 292.2553  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.17
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5904181"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.303648E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.17
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.858884      Q =-3.350360E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.17
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.858884      Q = 1.236484E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.17
+      OUTLET TEMP =   325.1       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.6439E+07   BRAKE HP =  0.6439E+07
+      ISENTR TEMP =   312.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4636E+07  HP =  0.2294E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.17
+      ITER  29 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  310.908    
+      KPHASE =    1 KODE =    1 T =  310.908     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   29:   6 VARS NOT CONVERGED, MAX ERR/TOL      4.5684        TIME =      0.17
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.17
+      NO. TEMP ITER =    4     TEMP =  308.519    
+      KODE = 1  NTRIAL =   3  T = 308.5188  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.17
+      NO. TEMP ITER =    4     TEMP =  307.226    
+      KODE = 1  NTRIAL =   4  T = 307.2256  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.18
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5868085"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.557496E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.18
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.863421      Q =-3.401021E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.18
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.863421      Q =-6.389716E-08
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.18
+      OUTLET TEMP =   325.3       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.6692E+07   BRAKE HP =  0.6692E+07
+      ISENTR TEMP =   312.4      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.4818E+07  HP =  0.2478E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.18
+      ITER  30 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  318.791    
+      KPHASE =    1 KODE =    1 T =  318.791     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   30:   5 VARS NOT CONVERGED, MAX ERR/TOL      1.6201        TIME =      0.18
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.18
+      NO. TEMP ITER =    4     TEMP =  315.063    
+      KODE = 1  NTRIAL =   3  T = 315.0630  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.18
+      NO. TEMP ITER =    4     TEMP =  313.010    
+      KODE = 1  NTRIAL =   3  T = 313.0105  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.19
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5830143"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.645176E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.19
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.868894      Q =-3.432021E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.19
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.868894      Q = 1.977541E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.19
+      OUTLET TEMP =   325.6       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.6949E+07   BRAKE HP =  0.6949E+07
+      ISENTR TEMP =   312.5      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.5003E+07  HP =  0.2671E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.19
+      ITER  31 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  321.014    
+      KPHASE =    1 KODE =    1 T =  321.014     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   31:   6 VARS NOT CONVERGED, MAX ERR/TOL      4.8411        TIME =      0.19
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.19
+      NO. TEMP ITER =    4     TEMP =  317.002    
+      KODE = 1  NTRIAL =   3  T = 317.0019  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.19
+      NO. TEMP ITER =    4     TEMP =  314.768    
+      KODE = 1  NTRIAL =   4  T = 314.7685  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.19
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5789695"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.652613E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.19
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.873353      Q =-3.476612E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.19
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.873353      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.19
+      OUTLET TEMP =   325.8       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.7209E+07   BRAKE HP =  0.7209E+07
+      ISENTR TEMP =   312.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.5191E+07  HP =  0.2874E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.19
+      ITER  32 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  316.906    
+      KPHASE =    1 KODE =    1 T =  316.906     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   32:   5 VARS NOT CONVERGED, MAX ERR/TOL      4.1166        TIME =      0.19
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.19
+      NO. TEMP ITER =    4     TEMP =  313.698    
+      KODE = 1  NTRIAL =   3  T = 313.6985  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.19
+      NO. TEMP ITER =    4     TEMP =  311.903    
+      KODE = 1  NTRIAL =   3  T = 311.9027  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.19
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5747669"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.557431E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.19
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.875175      Q =-3.564496E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.19
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.875175      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.19
+      OUTLET TEMP =   326.0       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.7469E+07   BRAKE HP =  0.7469E+07
+      ISENTR TEMP =   312.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.5377E+07  HP =  0.3084E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.19
+      ITER  33 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  405.903    
+      KPHASE =    1 KODE =    1 T =  405.903     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   33:   5 VARS NOT CONVERGED, MAX ERR/TOL     -13.221        TIME =      0.19
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.20
+      NO. TEMP ITER =    5     TEMP =  389.504    
+      KODE = 1  NTRIAL =   4  T = 389.5038  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.20
+      NO. TEMP ITER =    5     TEMP =  379.335    
+      KODE = 1  NTRIAL =   4  T = 379.3345  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.20
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5706202"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-7.056178E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.20
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.883715      Q =-3.585740E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.20
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.883715      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.20
+      OUTLET TEMP =   326.1       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.7874E+07   BRAKE HP =  0.7874E+07
+      ISENTR TEMP =   312.9      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.5669E+07  HP =  0.3427E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.20
+      ITER  34 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  403.599    
+      KPHASE =    1 KODE =    1 T =  403.599     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   34:   6 VARS NOT CONVERGED, MAX ERR/TOL      8.7528        TIME =      0.20
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  387.969    
+      KODE = 1  NTRIAL =   4  T = 387.9695  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  378.217    
+      KODE = 1  NTRIAL =   4  T = 378.2168  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.21
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5659969"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-7.032754E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.21
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.885722      Q =-3.650631E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.21
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.885722      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.21
+      OUTLET TEMP =   326.1       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.8107E+07   BRAKE HP =  0.8107E+07
+      ISENTR TEMP =   312.9      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.5837E+07  HP =  0.3633E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.21
+      ITER  35 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  10.0000    
+      KPHASE =    1 KODE =    1 T =  10.0000     P = 1.700000E+06 Q =  0.00000    
+
+  *** SEVERE ERROR WHILE EXECUTING CONVERGENCE BLOCK: "$OLVER01" (MODEL:        
+      "WEGSTEIN")                                              (SFINAL.1)       
+      SINGLE PHASE TEMPERATURE CALCULATIONS FAILED IN  5  ITERATIONS. FINAL     
+      TEMPERATURE IS  10.0000  FINAL ENTHALPY IS  -1.7004D+08  SPECIFIED        
+      ENTHALPY IS  -1.7163D+08   ERRORS OCCURRED IN FLASH CALCULATIONS FOR TEAR 
+      STREAM  S15 .                                                             
+
+  LOOP $OLVER01 ITER   35:   6 VARS NOT CONVERGED, MAX ERR/TOL      2.6570        TIME =      0.21
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.21
+      KODE = 1  NTRIAL =   8  T = 198.0324  P = 1.700000E+06  V = 0.608273      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.21
+      KODE = 1  NTRIAL =   7  T = 207.6820  P = 1.700000E+06  V = 0.627315      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.21
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5614247"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =  170361.    
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.21
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.887834      Q =-3.700519E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.21
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.887834      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.21
+      OUTLET TEMP =   326.0       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.8314E+07   BRAKE HP =  0.8314E+07
+      ISENTR TEMP =   312.9      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.5986E+07  HP =  0.3822E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.21
+      ITER  36 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  419.682    
+      KPHASE =    1 KODE =    1 T =  419.682     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   36:   5 VARS NOT CONVERGED, MAX ERR/TOL      7.3748        TIME =      0.21
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  402.686    
+      KODE = 1  NTRIAL =   4  T = 402.6861  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  391.773    
+      KODE = 1  NTRIAL =   4  T = 391.7735  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.21
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5568917"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-7.382940E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.21
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.889806      Q =-3.743593E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.21
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.889806      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.21
+      OUTLET TEMP =   326.0       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.8503E+07   BRAKE HP =  0.8503E+07
+      ISENTR TEMP =   312.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6122E+07  HP =  0.3998E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.21
+      ITER  37 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  368.495    
+      KPHASE =    1 KODE =    1 T =  368.495     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   37:   4 VARS NOT CONVERGED, MAX ERR/TOL     -2.2318        TIME =      0.21
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  358.411    
+      KODE = 1  NTRIAL =   4  T = 358.4115  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.21
+      NO. TEMP ITER =    5     TEMP =  352.225    
+      KODE = 1  NTRIAL =   4  T = 352.2253  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.22
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5524054"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-6.381742E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.891496      Q =-3.784863E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.891496      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.22
+      OUTLET TEMP =   325.9       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.8678E+07   BRAKE HP =  0.8678E+07
+      ISENTR TEMP =   312.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6248E+07  HP =  0.4163E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.22
+      ITER  38 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  317.197    
+      KPHASE =    1 KODE =    1 T =  317.197     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   38:   3 VARS NOT CONVERGED, MAX ERR/TOL      1.7809        TIME =      0.22
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.22
+      NO. TEMP ITER =    4     TEMP =  314.421    
+      KODE = 1  NTRIAL =   3  T = 314.4207  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.22
+      NO. TEMP ITER =    4     TEMP =  312.791    
+      KODE = 1  NTRIAL =   3  T = 312.7909  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.22
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5479836"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.372826E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.894725      Q =-3.850778E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.894725      Q = 1.651939E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.22
+      OUTLET TEMP =   325.6       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.8967E+07   BRAKE HP =  0.8967E+07
+      ISENTR TEMP =   312.6      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6456E+07  HP =  0.4447E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.22
+      ITER  39 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  341.541    
+      KPHASE =    1 KODE =    1 T =  341.541     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   39:   4 VARS NOT CONVERGED, MAX ERR/TOL      3.7527        TIME =      0.22
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.22
+      NO. TEMP ITER =    5     TEMP =  335.571    
+      KODE = 1  NTRIAL =   4  T = 335.5712  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.22
+      NO. TEMP ITER =    5     TEMP =  331.945    
+      KODE = 1  NTRIAL =   4  T = 331.9450  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.22
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5435032"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.818793E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.896922      Q =-3.921772E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.896922      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.22
+      OUTLET TEMP =   325.4       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.9228E+07   BRAKE HP =  0.9228E+07
+      ISENTR TEMP =   312.4      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6644E+07  HP =  0.4711E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.22
+      ITER  40 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  339.052    
+      KPHASE =    1 KODE =    1 T =  339.052     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   40:   3 VARS NOT CONVERGED, MAX ERR/TOL      2.5292        TIME =      0.22
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.22
+      NO. TEMP ITER =    4     TEMP =  333.565    
+      KODE = 1  NTRIAL =   4  T = 333.5649  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.22
+      NO. TEMP ITER =    4     TEMP =  330.217    
+      KODE = 1  NTRIAL =   4  T = 330.2167  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.22
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5390442"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.745364E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.898174      Q =-3.998081E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.22
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.898174      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.22
+      OUTLET TEMP =   325.2       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.9460E+07   BRAKE HP =  0.9460E+07
+      ISENTR TEMP =   312.2      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.6811E+07  HP =  0.4952E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.23
+      ITER  41 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  260.666    
+      KPHASE =    1 KODE =    1 T =  260.666     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   41:   2 VARS NOT CONVERGED, MAX ERR/TOL     -3.3229        TIME =      0.23
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.23
+      KODE = 1  NTRIAL =   9  T = 271.7574  P = 1.700000E+06  V = 0.991452      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.23
+      KODE = 1  NTRIAL =   9  T = 273.3417  P = 1.700000E+06  V = 0.993301      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.23
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.5138540"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-4.110228E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.23
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.901621      Q =-4.047800E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.23
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.901621      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.23
+      OUTLET TEMP =   325.0       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.9749E+07   BRAKE HP =  0.9749E+07
+      ISENTR TEMP =   312.1      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7019E+07  HP =  0.5261E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.23
+      ITER  42 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  275.845    
+      KPHASE =    1 KODE =    1 T =  275.845     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   42:   3 VARS NOT CONVERGED, MAX ERR/TOL      4.1074        TIME =      0.23
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.23
+      KODE = 1  NTRIAL =   3  T = 281.2097  P = 1.700000E+06  V = 0.996569      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.23
+      KODE = 1  NTRIAL =   3  T = 281.9018  P = 1.700000E+06  V = 0.998010      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.23
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.4928852"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-4.352886E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.23
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.903151      Q =-4.108505E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.24
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.903151      Q = 1.820403E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   324.8       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.9965E+07   BRAKE HP =  0.9965E+07
+      ISENTR TEMP =   312.0      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7175E+07  HP =  0.5497E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.24
+      ITER  43 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  437.606    
+      KPHASE =    1 KODE =    1 T =  437.606     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   43:   3 VARS NOT CONVERGED, MAX ERR/TOL      2.0389        TIME =      0.24
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.24
+      NO. TEMP ITER =    5     TEMP =  421.840    
+      KODE = 1  NTRIAL =   4  T = 421.8399  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.24
+      NO. TEMP ITER =    5     TEMP =  411.003    
+      KODE = 1  NTRIAL =   4  T = 411.0031  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.24
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.4757106"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-8.064718E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.904418      Q =-4.164666E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.24
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.904418      Q = 1.853777E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   324.7       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1016E+08   BRAKE HP =  0.1016E+08
+      ISENTR TEMP =   311.9      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7315E+07  HP =  0.5716E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.24
+      ITER  44 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    5     TEMP =  257.474    
+      KPHASE =    1 KODE =    1 T =  257.474     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   44:   1 VARS NOT CONVERGED, MAX ERR/TOL     -3.0886        TIME =      0.24
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.24
+      KODE = 1  NTRIAL =   9  T = 269.7057  P = 1.700000E+06  V = 0.989744      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.24
+      KODE = 1  NTRIAL =   9  T = 271.3877  P = 1.700000E+06  V = 0.991656      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.24
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.4614475"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-3.870538E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.906117      Q =-4.202204E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.24
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.906117      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   324.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1034E+08   BRAKE HP =  0.1034E+08
+      ISENTR TEMP =   311.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7444E+07  HP =  0.5920E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.24
+      ITER  45 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  293.355    
+      KPHASE =    1 KODE =    1 T =  293.355     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   45:   2 VARS NOT CONVERGED, MAX ERR/TOL      1.9010        TIME =      0.24
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.24
+      NO. TEMP ITER =    4     TEMP =  293.939    
+      KODE = 1  NTRIAL =   3  T = 293.9391  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.25
+      NO. TEMP ITER =    4     TEMP =  294.287    
+      KODE = 1  NTRIAL =   3  T = 294.2870  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.25
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.4492020"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-4.600739E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.25
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.907366      Q =-4.244767E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.25
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.907366      Q =-1.911566E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.25
+      OUTLET TEMP =   324.4       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1051E+08   BRAKE HP =  0.1051E+08
+      ISENTR TEMP =   311.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7566E+07  HP =  0.6116E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.25
+      ITER  46 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  322.881    
+      KPHASE =    1 KODE =    1 T =  322.881     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   46:   1 VARS NOT CONVERGED, MAX ERR/TOL      1.5387        TIME =      0.25
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.25
+      NO. TEMP ITER =    4     TEMP =  319.898    
+      KODE = 1  NTRIAL =   3  T = 319.8983  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.25
+      NO. TEMP ITER =    4     TEMP =  318.055    
+      KODE = 1  NTRIAL =   3  T = 318.0552  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.25
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.4386832"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.247095E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.25
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.907578      Q =-4.305953E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.25
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.907578      Q =  0.00000    
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.25
+      OUTLET TEMP =   324.4       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1066E+08   BRAKE HP =  0.1066E+08
+      ISENTR TEMP =   311.7      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7678E+07  HP =  0.6299E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.25
+      ITER  47 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  327.928    
+      KPHASE =    1 KODE =    1 T =  327.928     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   47:   1 VARS NOT CONVERGED, MAX ERR/TOL     -5.3472        TIME =      0.25
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.25
+      NO. TEMP ITER =    4     TEMP =  324.453    
+      KODE = 1  NTRIAL =   4  T = 324.4534  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.25
+      NO. TEMP ITER =    4     TEMP =  322.282    
+      KODE = 1  NTRIAL =   4  T = 322.2823  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.25
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.4299370"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.332524E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.25
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.912116      Q =-4.347601E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.25
+      KODE = 2  NTRIAL =   2  T = 278.0000  P = 1.000000E+06  V = 0.912116      Q =-2.001655E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.25
+      OUTLET TEMP =   324.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1106E+08   BRAKE HP =  0.1106E+08
+      ISENTR TEMP =   311.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.7964E+07  HP =  0.6777E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.25
+      ITER  48 For Tear Streams: S15
+
+      --FLASH TEAR STREAM S15     
+      KODE = 1   NO. TEMP ITER =    4     TEMP =  324.479    
+      KPHASE =    1 KODE =    1 T =  324.479     P = 1.700000E+06 Q =  0.00000    
+
+  LOOP $OLVER01 ITER   48:   1 VARS NOT CONVERGED, MAX ERR/TOL      5.0506        TIME =      0.25
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.25
+      NO. TEMP ITER =    4     TEMP =  321.414    
+      KODE = 1  NTRIAL =   3  T = 321.4140  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B2       MODEL: MIXER                                             TIME =      0.26
+      NO. TEMP ITER =    4     TEMP =  319.503    
+      KODE = 1  NTRIAL =   4  T = 319.5030  P = 1.700000E+06  V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RSTOIC                                            TIME =      0.27
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B3" (MODEL: "RSTOIC")     
+                                                               (URE07.3)        
+      COMPONENT "H2" HAS ZERO FLOWRATE IN THE OUTLET STREAM.                    
+      FRACTIONAL CONVERSION HAS BEEN MODIFIED BY                                
+      A FACTOR OF "0.4283911"                                                   
+      KODE = 2  NTRIAL =   3  T = 373.0000  P = 1.000000E+06  V =  1.00000      Q =-5.239445E+07
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.27
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.912075      Q =-4.375411E+07
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.27
+      KODE = 2  NTRIAL =   1  T = 278.0000  P = 1.000000E+06  V = 0.912075      Q =-2.014296E-07
+
+      UOS BLOCK B9       MODEL: COMPR                                             TIME =      0.27
+      OUTLET TEMP =   324.5       OUTLET PRES =  0.1700E+07   INDICATED HP =  0.1113E+08   BRAKE HP =  0.1113E+08
+      ISENTR TEMP =   311.8      CALC ISENTR EFF =  0.7200      ISENTR HP =  0.8015E+07  HP =  0.6862E+08
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.27
+      ITER  49 For Tear Streams: S15
+
+  LOOP $OLVER01 ITER   49:     *** CONVERGED *** , MAX ERR/TOL     0.76447        TIME =      0.27
+
+      UOS BLOCK B8       MODEL: HEATER                                            TIME =      0.27
+      KODE = 2  NTRIAL =   3  T = 333.0000  P = 1.000000E+06  V = 0.135887      Q = 5.112507E+06
+
+      UOS BLOCK B11      MODEL: DSTWU                                             TIME =      0.27
+       TD =   252.2    ,  TB =   384.3    ,  RMIN =  0.5105E-01,  RACT =  0.7844E-01
+       MIN STAGES =   2.759    , ACT STAGES =   15.00    
+       ACT. # OF RECT. STAGES =   5.784    
+       REBOILER DUTY =  0.5256E+07
+       FEED QUALITY =   0.1869    
+
+      UOS BLOCK B12      MODEL: VALVE                                             TIME =      0.27
+      KODE = 1  NTRIAL =   3  T = 350.6188  P =  250000.      V = 0.218099      Q =  0.00000    
+      OUTLET PRES =   0.2500E+06 PRES DROP =   0.3500E+06
+
+      UOS BLOCK B17      MODEL: MIXER                                             TIME =      0.27
+      KODE = 1  NTRIAL =   6  T = 311.7620  P =  250000.      V = 0.692553      Q =  0.00000    
+
+      UOS BLOCK B18      MODEL: HEATER                                            TIME =      0.27
+      KODE = 2  NTRIAL =   1  T = 448.0000  P =  250000.      V =  1.00000      Q = 1.668116E+07
+
+      UOS BLOCK B19      MODEL: RPLUG                                             TIME =      0.27
+        AT REACTOR EXIT :
+        LENGTH =   19.690      DIAMETER =   3.9390      RESIDENCE TIME =   33.545    
+        PROCESS STREAM T =    448.00     P =   0.25000E+06 H =  -0.11482E+09 V =    1.0000    
+
+
+  *   WARNING WHILE IN SEQUENCE MONITOR                        (BALMAS.1)       
+      BLOCK B9 IS NOT IN MASS BALANCE:                                          
+      MASS INLET FLOW = 0.20276392E+03, MASS OUTLET FLOW = 0.20150892E+03       
+      RELATIVE DIFFERENCE = 0.62280063E-02                                      
+      IMBALANCE IS DUE TO A LOOSE TEAR TOLERANCE                                
+      STREAM S15      TOLERANCE =  0.10000000E-01                               
+
+      GENERATING RESULTS FOR UOS BLOCK B4       MODEL: HEATER                     TIME =      0.29
+
+      GENERATING RESULTS FOR UOS BLOCK B8       MODEL: HEATER                     TIME =      0.29
+
+      GENERATING RESULTS FOR UOS BLOCK B18      MODEL: HEATER                     TIME =      0.29
+      STREAM S13 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2  NTRIAL =   4  T = 252.2203  P =  600000.      V =  1.00000      Q = 2.482495E-04
+      STREAM S14 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 3  NTRIAL =   6  T = 384.2519  P =  600000.      V =  0.00000      Q = -1045.05    
+      STREAM S15 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2   NO. TEMP ITER =    1     TEMP =  324.493    
+      KPHASE =    1 KODE =    2 T =  324.493     P = 1.700000E+06 Q =  3460.90    
+
+ Report Writer entered                                                            Time =     90.73
+      STREAM S13 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2  NTRIAL =   4  T = 252.2203  P =  600000.      V =  1.00000      Q = 2.482495E-04
+      STREAM S14 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 3  NTRIAL =   6  T = 384.2519  P =  600000.      V =  0.00000      Q = -1045.05    
+      STREAM S15 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2   NO. TEMP ITER =    1     TEMP =  324.493    
+      KPHASE =    1 KODE =    2 T =  324.493     P = 1.700000E+06 Q =  3460.90    
+
+ Results generated                                                                Time =     90.82
+
+ Report Writer entered                                                            Time =    137.23
+      STREAM S13 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2  NTRIAL =   4  T = 252.2203  P =  600000.      V =  1.00000      Q = 2.482495E-04
+      STREAM S14 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 3  NTRIAL =   6  T = 384.2519  P =  600000.      V =  0.00000      Q = -1045.05    
+      STREAM S15 WILL BE FLASHED FOR PROPERTY CALCULATIONS.
+      KODE = 2   NO. TEMP ITER =    1     TEMP =  324.493    
+      KPHASE =    1 KODE =    2 T =  324.493     P = 1.700000E+06 Q =  3460.90    
+
+ Results generated                                                                Time =    137.31
+<reset scope>
+<reset scope>
+<reset scope>

@@ -1,0 +1,205 @@
+ >>ORIGINAL RUN                           JULY 5, 2022        
+   12:44:25 P.M.                          TUESDAY     
+   INPUT FILE: _0426czz.inm
+   RUN ID : _0426czz
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 37.0 at 12:44:24 Tue Jul 5, 2022
+          3    ;Directory   Runid SYNGAS TO 1-PROPANOL V2
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS SI FLOW='kg/hr' MASS-FLOW='kg/hr' MOLE-FLOW='kmol/hr'  &
+         11            PRESSURE=bar FLUX='cuft/sqft-hr' MASS-FLUX='kg/sqm-hr'  &
+         12            PDROP-PER-HT='mbar/m' PDROP=bar INVERSE-PRES='1/bar'  &
+         13            SHORT-LENGTH=mm
+         14
+         15    DEF-STREAMS CONVEN ALL
+         16
+         17    MODEL-OPTION
+         18
+         19    DATABANKS 'APV110 PURE37' / 'APV110 AQUEOUS' / 'APV110 SOLIDS' &
+         20             / 'APV110 INORGANIC' / 'APESV110 AP-EOS' /  &
+         21            'NISTV110 NIST-TRC' / NOASPENPCD
+         22
+         23    PROP-SOURCES 'APV110 PURE37' / 'APV110 AQUEOUS' /  &
+         24            'APV110 SOLIDS' / 'APV110 INORGANIC' / 'APESV110 AP-EOS' &
+         25             / 'NISTV110 NIST-TRC'
+         26
+         27    COMPONENTS
+         28        CO2 CO2 /
+         29        H2 H2 /
+         30        CO CO /
+         31        H2O H2O /
+         32        ETHYLENE C2H4 /
+         33        ETHANE C2H6 /
+         34        PROPANAL C3H6O-3 /
+         35        PROPANOL C3H8O-1
+         36
+         37    SOLVE
+         38        RUN-MODE MODE=SIM
+         39
+         40    FLOWSHEET
+         41        BLOCK B1 IN=S1 S2 S15 OUT=S3
+         42        BLOCK B2 IN=S3 S4 OUT=S5
+         43        BLOCK B3 IN=S5 OUT=S6
+         44        BLOCK B4 IN=S6 OUT=S7
+         45        BLOCK B5 IN=S7 OUT=S8 S9
+         46        BLOCK B9 IN=S8 OUT=S15
+         47        BLOCK B8 IN=S9 OUT=S12
+         48        BLOCK B11 IN=S12 OUT=S13 S14
+         49        BLOCK B12 IN=S14 OUT=S16
+         50        BLOCK B16 IN=S18 OUT=S19
+         51        BLOCK B17 IN=S16 S19 OUT=S20
+         52        BLOCK B18 IN=S20 OUT=S21
+         53        BLOCK B19 IN=S21 OUT=S22
+         54
+         55    PROPERTIES UNIQUAC
+         56
+         57    PROP-DATA UNIQ-1
+         58        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         59            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         60        PROP-LIST UNIQ
+         61        BPVAL H2O PROPANAL 0.0 -271.7981000 0.0 0.0 47.50000000  &
+         62            69.00000000 0.0
+         63        BPVAL PROPANAL H2O 0.0 -99.20640000 0.0 0.0 47.50000000  &
+         64            69.00000000 0.0
+         65        BPVAL H2O PROPANOL -2.333000000 600.4906000 0.0 0.0  &
+         66            25.00000000 100.0000000 0.0
+         67        BPVAL PROPANOL H2O 1.766800000 -651.2462000 0.0 0.0  &
+         68            25.00000000 100.0000000 0.0
+         69
+         70    STREAM S1
+         71        SUBSTREAM MIXED TEMP=298. PRES=17.
+         72        MOLE-FLOW CO2 189.846 / CO 1810.15
+         73
+         74    STREAM S2
+         75        SUBSTREAM MIXED TEMP=298. PRES=17.
+         76        MOLE-FLOW H2 1923.61
+         77
+         78    STREAM S4
+         79        SUBSTREAM MIXED TEMP=298. PRES=17.
+         80        MOLE-FLOW ETHYLENE 2008.93
+         81
+         82    STREAM S18
+         83        SUBSTREAM MIXED TEMP=298. PRES=17.
+         84        MOLE-FLOW H2 1727.8684562
+         85
+         86    BLOCK B1 MIXER
+         87        PARAM
+         88
+         89    BLOCK B2 MIXER
+         90        PARAM
+         91
+         92    BLOCK B17 MIXER
+         93        PARAM
+         94
+         95    BLOCK B4 HEATER
+         96        PARAM TEMP=278. PRES=10. DPPARMOPT=NO
+         97
+         98    BLOCK B8 HEATER
+         99        PARAM TEMP=333. PRES=10. DPPARMOPT=NO
+        100
+        101    BLOCK B18 HEATER
+        102        PARAM TEMP=448. PRES=2.5 DPPARMOPT=NO
+        103
+        104    BLOCK B5 FLASH2
+        105        PARAM TEMP=278. PRES=10.
+        106
+        107    BLOCK B11 DSTWU
+        108        PARAM LIGHTKEY=ETHANE RECOVL=0.999 HEAVYKEY=PROPANAL  &
+        109            RECOVH=0.001 PTOP=6. PBOT=6. RDV=1.0 NSTAGE=15
+        110
+        111    BLOCK B3 RSTOIC
+        112        PARAM TEMP=373. PRES=10.
+        113        STOIC 1 MIXED ETHYLENE -1. / CO -1. / H2 -1. /  &
+        114            PROPANAL 1.
+        115        STOIC 2 MIXED ETHYLENE -1. / H2 -1. / ETHANE 1.
+        116        CONV 1 MIXED ETHYLENE 0.81
+        117        CONV 2 MIXED ETHYLENE 0.09
+        118
+        119    BLOCK B19 RPLUG
+        120        PARAM TYPE=T-SPEC LENGTH=19.69 DIAM=3.939
+        121        REACTIONS RXN-IDS=R-1
+        122
+        123    BLOCK B9 COMPR
+        124        PARAM TYPE=ISENTROPIC PRES=17. SB-MAXIT=30 SB-TOL=0.0001
+        125
+        126    BLOCK B12 VALVE
+        127        PARAM P-OUT=2.5
+        128
+        129    BLOCK B16 VALVE
+        130        PARAM P-OUT=2.5
+        131
+        132    DESIGN-SPEC DS-1
+        133        DEFINE CONDTEMP STREAM-VAR STREAM=S13 SUBSTREAM=MIXED  &
+        134            VARIABLE=TEMP UOM="K"
+        135        SPEC "CONDTEMP" TO "298"
+        136        TOL-SPEC "1E-1"
+        137        VARY BLOCK-VAR BLOCK=B11 VARIABLE=RECOVL SENTENCE=PARAM
+        138        LIMITS "0.9" "0.9999"
+        139
+        140    DESIGN-SPEC DS-2
+        141        DEFINE REBTEM STREAM-VAR STREAM=S14 SUBSTREAM=MIXED  &
+        142            VARIABLE=TEMP UOM="K"
+        143        SPEC "REBTEM" TO "386"
+        144        TOL-SPEC "1E-1"
+        145        VARY BLOCK-VAR BLOCK=B8 VARIABLE=TEMP SENTENCE=PARAM UOM="K"
+        146        LIMITS "278" "573"
+        147
+        148    EO-CONV-OPTI
+        149
+        150    SENSITIVITY S-1
+        151        DEFINE REBDUTY BLOCK-VAR BLOCK=B11 VARIABLE=REB-DUTY  &
+        152            SENTENCE=RESULTS UOM="kJ/hr"
+        153        DEFINE CONDDUTY BLOCK-VAR BLOCK=B11 VARIABLE=COND-DUTY  &
+        154            SENTENCE=RESULTS UOM="kJ/hr"
+        155        DEFINE CONDTEMP STREAM-VAR STREAM=S13 SUBSTREAM=MIXED  &
+        156            VARIABLE=TEMP UOM="K"
+        157        DEFINE REBTEMP STREAM-VAR STREAM=S14 SUBSTREAM=MIXED  &
+        158            VARIABLE=TEMP UOM="K"
+        159        TABULATE 1 "REBDUTY"
+        160        TABULATE 2 "CONDDUTY"
+        161        TABULATE 3 "CONDTEMP"
+        162        TABULATE 4 "REBTEMP"
+        163        VARY BLOCK-VAR BLOCK=B8 VARIABLE=TEMP SENTENCE=PARAM UOM="K"
+        164        RANGE OPT-LIST=RANGE LOWER="323" UPPER="523"  &
+        165            INCR="10.000000"
+        166        VARY BLOCK-VAR BLOCK=B11 VARIABLE=PTOP SENTENCE=PARAM UOM= &
+        167            "bar"
+        168        RANGE OPT-LIST=RANGE LOWER="4" UPPER="10" INCR="1"
+        169        VARY BLOCK-VAR BLOCK=B11 VARIABLE=NSTAGE SENTENCE=PARAM
+        170        RANGE OPT-LIST=RANGE LOWER="7" UPPER="20" INCR="1"
+        171
+        172    CONV-OPTIONS
+        173        PARAM TOL=0.01 SPEC-METHOD=NEWTON COMB-METHOD=NEWTON  &
+        174            MSPEC-METHOD=NEWTON
+        175        WEGSTEIN MAXIT=9999
+        176        NEWTON MAXIT=9999
+        177
+        178    STREAM-REPOR MOLEFLOW
+        179
+        180    PROPERTY-REP PCES
+        181
+        182    REACTIONS R-1 GENERAL
+        183        REAC-DATA 1 NAME=HYDRO REAC-CLASS=POWERLAW PHASE=V  &
+        184            CBASIS=PARTIALPRES REVERSIBLE=YES
+        185        RATE-CON 1 PRE-EXP=175.91 ACT-ENERGY=7.81 <kJ/mol>
+        186        STOIC 1 MIXED PROPANAL -1. / H2 -1. / PROPANOL 1.
+        187        DFORCE-EXP 1 MIXED PROPANAL 1. / MIXED H2 -0.5 / MIXED  &
+        188            PROPANOL 0.
+        189        REAC-ACT 1
+        190
+        191    DISABLE
+        192        SENSITIVITY S-1
+        193        DESIGN-SPEC DS-1 DS-2
+        194    ;
+        195    ;
+        196    ;
+        197    ;
+        198    ;
+
+   SIMULATION STARTED     MODULE USED: apmain  
+   LOCATED IN:C:\Program Files\AspenTech\Aspen Plus V11.0\Engine\\xeq

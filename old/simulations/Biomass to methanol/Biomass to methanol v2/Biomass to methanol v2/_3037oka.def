@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _3037oka.inm
+MODNAME: apmain
+RUNID: _3037oka
+NEW_RUNID: _3037oka
+OLD_RUNID: _3037oka
+PDF: _3037oka.appdf
+USERNAME: anabera
+XMOD: C:\Program Files\AspenTech\Aspen Plus V11.0\Engine\xeq\apmain
+DBCONN: _3037oka.ads

@@ -1,0 +1,69 @@
+SimaPro 9.2.0.2	process	Date:	6/16/2022	Time:	5:20:09 PM
+Project	Maximiliano Hoermann
+
+
+Process
+
+Category type	Material
+Process identifier	ETH00237000151375900003
+Type	
+Process name	
+Status	
+Time period	Unspecified
+Geography	Unspecified
+Technology	Unspecified
+Representativeness	Unspecified
+Multiple output allocation	Unspecified
+Substitution allocation	Unspecified
+Cut off rules	Unspecified
+Capital goods	Unspecified
+Boundary with nature	Unspecified
+Infrastructure	No
+Date	5/22/2022
+Record	
+Generator	
+External documents
+Literature references
+Collection method	
+Data treatment	
+Verification	
+Comment	
+Allocation rules	
+System description	
+	
+
+Products
+Maximiliano Chilled Water	1	MJ	100	not defined	00. SUPERLAB activities\Electricity\sub-activities	
+
+Avoided products
+
+Resources
+
+Materials/fuels
+Process water, ion exchange, production mix, at plant, from surface water RER S	0	kg	Undefined				
+Tap water {RER}| market group for | Cut-off, U	38	kg	Undefined				
+
+Electricity/heat
+steam, in chemical industry {RER}| steam production, in chemical industry | Cut-off, U	0	kg	Undefined				
+Electricity, high voltage {RER}| market group for | Cut-off, U	0.00814	kWh	Undefined				
+heat, from steam, in chemical industry {RER}| steam production, as energy carrier, in chemical industry | Cut-off, U	2.32	MJ	Undefined				
+
+Emissions to air
+
+Emissions to water
+
+Emissions to soil
+
+Final waste flows
+
+Non material emissions
+
+Social issues
+
+Economic issues
+
+Waste to treatment
+
+Input parameters
+
+Calculated parameters
