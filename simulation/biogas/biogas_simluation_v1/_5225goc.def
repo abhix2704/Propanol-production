@@ -1,0 +1,10 @@
+SLAVE:
+INPUT: _5225goc.inm
+MODNAME: apmain
+RUNID: _5225goc
+NEW_RUNID: _5225goc
+OLD_RUNID: _5225goc
+PDF: _5225goc.appdf
+USERNAME: anabera
+XMOD: C:\Program Files\AspenTech\Aspen Plus V12.1\Engine\xeq\apmain
+DBCONN: _5225goc.ads

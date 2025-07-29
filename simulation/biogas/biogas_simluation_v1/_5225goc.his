@@ -1,0 +1,1853 @@
+
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + +                                                                         + +
+ + +                      ASPEN PLUS CALCULATION HISTORY                     + +
+ + +                                                                         + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+ + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + + +
+
+ ASPEN PLUS IS A TRADEMARK OF           HOTLINE:
+ ASPEN TECHNOLOGY, INC.                 U.S.A. 888/996-7100
+ 781/221-6400                           EUROPE (44) 1189-226555
+
+ PLATFORM: WIN-X64                                       JUNE 21, 2025       
+ VERSION: 39.0   Build 116                               SATURDAY    
+ INSTALLATION:                                           9:24:24 P.M.        
+
+ THIS COPY OF ASPEN PLUS LICENSED TO ETH ZURICH                      
+
+
+      ASPEN PLUS (R) IS A PROPRIETARY PRODUCT OF ASPEN TECHNOLOGY, INC.
+      (ASPENTECH), AND MAY BE USED ONLY UNDER AGREEMENT WITH ASPENTECH.
+      RESTRICTED RIGHTS LEGEND:  USE, REPRODUCTION, OR DISCLOSURE BY THE
+      U.S. GOVERNMENT IS SUBJECT TO RESTRICTIONS SET FORTH IN 
+      (i) FAR 52.227-14, Alt. III, (ii) FAR 52.227-19, (iii) DFARS 
+      252.227-7013(c)(1)(ii), or (iv) THE ACCOMPANYING LICENSE AGREEMENT,
+      AS APPLICABLE. FOR PURPOSES OF THE FAR, THIS SOFTWARE SHALL BE DEEMED
+      TO BE "UNPUBLISHED" AND LICENSED WITH DISCLOSURE PROHIBITIONS.
+      CONTRACTOR/SUBCONTRACTOR: ASPEN TECHNOLOGY, INC. 20 CROSBY DRIVE,
+      BEDFORD, MA 01730.
+ *** INPUT SUMMARY ***
+
+ >>CURRENT RUN
+
+   ORIGINAL RUN                           JUNE 21, 2025       
+   9:24:24 P.M.                           SATURDAY    
+   INPUT FILE: _5225goc.inm
+   RUN ID : _5225goc
+          1    ;
+          2    ;Input file created by Aspen Plus Rel. 39.0 at 21:24:23 Sat Jun 21, 2025
+          3    ;Directory   Runid BIOGAS_SIMLUATION_V1
+          4    ;
+          5
+          6
+          7    DYNAMICS
+          8        DYNAMICS RESULTS=ON
+          9
+         10    IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         11            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         12
+         13    DEF-STREAMS CONVEN ALL
+         14
+         15    MODEL-OPTION
+         16
+         17    DATABANKS 'APV121 PURE39' / 'APV121 AQUEOUS' / 'APV121 SOLIDS' &
+         18             / 'APV121 INORGANIC' / 'APESV121 AP-EOS' /  &
+         19            'NISTV121 NIST-TRC' / NOASPENPCD
+         20
+         21    PROP-SOURCES 'APV121 PURE39' / 'APV121 AQUEOUS' /  &
+         22            'APV121 SOLIDS' / 'APV121 INORGANIC' / 'APESV121 AP-EOS' &
+         23             / 'NISTV121 NIST-TRC'
+         24
+         25    COMPONENTS
+         26        CARBMONO CO /
+         27        HYDROGEN H2 /
+         28        WATER H2O /
+         29        CARBDI CO2 /
+         30        MEA C2H7NO /
+         31        ETHYLENE C2H4 /
+         32        ETHANE C2H6 /
+         33        PROPANOL C3H8O-1 /
+         34        PROPANAL C3H6O-3 /
+         35        METHANE CH4
+         36
+         37    SOLVE
+         38        RUN-MODE MODE=SIM
+         39
+         40    FLOWSHEET
+         41        BLOCK B1 IN=CARBONDI BIOGAS S50 OUT=S3
+         42        BLOCK B2 IN=S9 OUT=S8
+         43        BLOCK B7 IN=S3 OUT=S9
+         44        BLOCK B20 IN=S8 OUT=S25
+         45        BLOCK B21 IN=S25 OUT=S26 S28
+         46        BLOCK B22 IN=S26 OUT=S27
+         47        BLOCK B23 IN=S27 OUT=S29
+         48        BLOCK B24 IN=S29 OUT=S30 S31
+         49        BLOCK B25 IN=S30 OUT=S32
+         50        BLOCK B26 IN=S32 OUT=S33
+         51        BLOCK B27 IN=S33 OUT=S34 S35
+         52        BLOCK B28 IN=S34 OUT=S36
+         53        BLOCK B29 IN=S36 OUT=S37
+         54        BLOCK B30 IN=S37 OUT=S38 S39
+         55        BLOCK B31 IN=S39 S35 S31 S51 S28 OUT=WASTEWAT
+         56        BLOCK B32 IN=S38 S41 OUT=SYNGAS S43
+         57        BLOCK B33 IN=FRESHMEA S48 FRESHWAT OUT=S45
+         58        BLOCK B34 IN=S46 OUT=S41
+         59        BLOCK B35 IN=S45 OUT=S46
+         60        BLOCK B38 IN=S43 OUT=S47 S48
+         61        BLOCK B39 IN=S47 OUT=S49
+         62        BLOCK B40 IN=S49 OUT=S50 S51
+         63        BLOCK B41 IN=S58 SYNGAS OUT=S59
+         64        BLOCK B42 IN=ETHYLENE OUT=S54
+         65        BLOCK B43 IN=S55 OUT=S56
+         66        BLOCK B44 IN=S57 OUT=S58
+         67        BLOCK B45 IN=S54 OUT=S55
+         68        BLOCK B46 IN=S56 OUT=S57
+         69        BLOCK B47 IN=S59 OUT=S60
+         70        BLOCK B48 IN=S60 OUT=S61
+         71        BLOCK B49 IN=S61 OUT=S62
+         72        BLOCK B50 IN=S62 S65 OUT=S66
+         73        BLOCK B51 IN=HYDRO2 OUT=S64
+         74        BLOCK B52 IN=S64 OUT=S65
+         75        BLOCK B3 IN=S66 OUT=S1
+         76        BLOCK B4 IN=S1 OUT=S2
+         77        BLOCK B5 IN=S2 OUT=S4 PROPANOL
+         78
+         79    PROPERTIES PENG-ROB
+         80        PROPERTIES AMINES
+         81
+         82    PROP-DATA PRKBV-1
+         83        IN-UNITS MET PRESSURE=bar TEMPERATURE=C DELTA-T=C PDROP=bar  &
+         84            INVERSE-PRES='1/bar' SHORT-LENGTH=mm
+         85        PROP-LIST PRKBV
+         86        BPVAL CARBMONO HYDROGEN .0919000000 0.0 0.0 -273.1500000  &
+         87            726.8500000
+         88        BPVAL HYDROGEN CARBMONO .0919000000 0.0 0.0 -273.1500000  &
+         89            726.8500000
+         90        BPVAL HYDROGEN CARBDI -.1622000000 0.0 0.0 -273.1500000  &
+         91            726.8500000
+         92        BPVAL CARBDI HYDROGEN -.1622000000 0.0 0.0 -273.1500000  &
+         93            726.8500000
+         94        BPVAL WATER CARBDI .1200000000 0.0 0.0 -273.1500000  &
+         95            726.8500000
+         96        BPVAL CARBDI WATER .1200000000 0.0 0.0 -273.1500000  &
+         97            726.8500000
+         98        BPVAL HYDROGEN ETHYLENE 7.40000000E-3 0.0 0.0 -273.1500000  &
+         99            726.8500000
+        100        BPVAL ETHYLENE HYDROGEN 7.40000000E-3 0.0 0.0 -273.1500000  &
+        101            726.8500000
+        102        BPVAL CARBDI ETHYLENE .0552000000 0.0 0.0 -273.1500000  &
+        103            726.8500000
+        104        BPVAL ETHYLENE CARBDI .0552000000 0.0 0.0 -273.1500000  &
+        105            726.8500000
+        106        BPVAL CARBMONO ETHANE -.0226000000 0.0 0.0 -273.1500000  &
+        107            726.8500000
+        108        BPVAL ETHANE CARBMONO -.0226000000 0.0 0.0 -273.1500000  &
+        109            726.8500000
+        110        BPVAL HYDROGEN ETHANE -.0667000000 0.0 0.0 -273.1500000  &
+        111            726.8500000
+        112        BPVAL ETHANE HYDROGEN -.0667000000 0.0 0.0 -273.1500000  &
+        113            726.8500000
+        114        BPVAL CARBDI ETHANE .1322000000 0.0 0.0 -273.1500000  &
+        115            726.8500000
+        116        BPVAL ETHANE CARBDI .1322000000 0.0 0.0 -273.1500000  &
+        117            726.8500000
+        118        BPVAL ETHYLENE ETHANE 8.90000000E-3 0.0 0.0 -273.1500000  &
+        119            726.8500000
+        120        BPVAL ETHANE ETHYLENE 8.90000000E-3 0.0 0.0 -273.1500000  &
+        121            726.8500000
+        122        BPVAL CARBMONO METHANE .0300000000 0.0 0.0 -273.1500000  &
+        123            726.8500000
+        124        BPVAL METHANE CARBMONO .0300000000 0.0 0.0 -273.1500000  &
+        125            726.8500000
+        126        BPVAL HYDROGEN METHANE .0156000000 0.0 0.0 -273.1500000  &
+        127            726.8500000
+        128        BPVAL METHANE HYDROGEN .0156000000 0.0 0.0 -273.1500000  &
+        129            726.8500000
+        130        BPVAL CARBDI METHANE .0919000000 0.0 0.0 -273.1500000  &
+        131            726.8500000
+        132        BPVAL METHANE CARBDI .0919000000 0.0 0.0 -273.1500000  &
+        133            726.8500000
+        134        BPVAL ETHYLENE METHANE .0215000000 0.0 0.0 -273.1500000  &
+        135            726.8500000
+        136        BPVAL METHANE ETHYLENE .0215000000 0.0 0.0 -273.1500000  &
+        137            726.8500000
+        138        BPVAL ETHANE METHANE -2.6000000E-3 0.0 0.0 -273.1500000  &
+        139            726.8500000
+        140        BPVAL METHANE ETHANE -2.6000000E-3 0.0 0.0 -273.1500000  &
+        141            726.8500000
+        142
+        143    STREAM BIOGAS
+        144        SUBSTREAM MIXED TEMP=25. PRES=1. MOLE-FLOW=191.1362037
+        145        MOLE-FRAC CARBDI 0.43 / METHANE 0.57
+        146
+        147    STREAM CARBONDI
+        148        SUBSTREAM MIXED TEMP=25. PRES=1. MOLE-FLOW=1000.
+        149        MOLE-FRAC CARBDI 1.
+        150
+        151    STREAM ETHYLENE
+        152        SUBSTREAM MIXED TEMP=25. PRES=1. MOLE-FLOW=202.6043759
+        153        MOLE-FRAC ETHYLENE 1.
+        154
+        155    STREAM FRESHMEA
+        156        SUBSTREAM MIXED TEMP=25. PRES=1. MASS-FLOW=20000.
+        157        MASS-FRAC WATER 0. / MEA 1.
+        158
+        159    STREAM FRESHWAT
+        160        SUBSTREAM MIXED TEMP=25. PRES=1. MOLE-FLOW=20000.
+        161        MASS-FRAC WATER 1. / MEA 0.
+        162
+        163    STREAM HYDRO2
+        164        SUBSTREAM MIXED TEMP=25. PRES=1. MOLE-FLOW=207.2238605
+        165        MASS-FRAC HYDROGEN 1.
+        166
+        167    BLOCK B1 MIXER
+        168        PARAM
+        169
+        170    BLOCK B31 MIXER
+        171        PARAM
+        172
+        173    BLOCK B33 MIXER
+        174        PARAM
+        175
+        176    BLOCK B41 MIXER
+        177        PARAM
+        178
+        179    BLOCK B50 MIXER
+        180        PARAM
+        181
+        182    BLOCK B4 HEATER
+        183        PARAM TEMP=25. PRES=0. DPPARMOPT=NO
+        184
+        185    BLOCK B7 HEATER
+        186        PARAM TEMP=850. PRES=0. DPPARMOPT=YES
+        187
+        188    BLOCK B20 HEATER
+        189        PARAM TEMP=25. PRES=0. DPPARMOPT=NO
+        190
+        191    BLOCK B23 HEATER
+        192        PARAM TEMP=25. PRES=0. DPPARMOPT=NO
+        193
+        194    BLOCK B26 HEATER
+        195        PARAM TEMP=25. PRES=0. DPPARMOPT=NO
+        196
+        197    BLOCK B29 HEATER
+        198        PARAM TEMP=25. PRES=0. DPPARMOPT=NO
+        199
+        200    BLOCK B35 HEATER
+        201        PARAM TEMP=40. PRES=0. DPPARMOPT=NO
+        202
+        203    BLOCK B39 HEATER
+        204        PARAM TEMP=40. PRES=0. DPPARMOPT=NO
+        205
+        206    BLOCK B45 HEATER
+        207        PARAM TEMP=25. PRES=0. DPPARMOPT=NO
+        208
+        209    BLOCK B46 HEATER
+        210        PARAM TEMP=25. PRES=0. DPPARMOPT=NO
+        211
+        212    BLOCK B47 HEATER
+        213        PARAM TEMP=100. PRES=0. DPPARMOPT=NO
+        214
+        215    BLOCK B49 HEATER
+        216        PARAM TEMP=175. PRES=2.5 DPPARMOPT=NO
+        217
+        218    BLOCK B52 HEATER
+        219        PARAM TEMP=175. PRES=0. DPPARMOPT=NO
+        220
+        221    BLOCK B5 FLASH2
+        222        PARAM PRES=0. DUTY=0.
+        223
+        224    BLOCK B21 FLASH2
+        225        PARAM PRES=0. DUTY=0.
+        226
+        227    BLOCK B24 FLASH2
+        228        PARAM PRES=0. DUTY=0.
+        229
+        230    BLOCK B27 FLASH2
+        231        PARAM PRES=0. DUTY=0.
+        232
+        233    BLOCK B30 FLASH2
+        234        PARAM PRES=0. DUTY=0.
+        235
+        236    BLOCK B40 FLASH2
+        237        PARAM PRES=0. DUTY=0.
+        238
+        239    BLOCK B32 RADFRAC
+        240        PARAM NSTAGE=10 ALGORITHM=STANDARD MAXOL=200 DAMPING=NONE
+        241        COL-CONFIG CONDENSER=NONE REBOILER=NONE
+        242        FEEDS S38 10 ON-STAGE / S41 1 ON-STAGE
+        243        PRODUCTS S43 10 L / SYNGAS 1 V
+        244        P-SPEC 1 28.
+        245        COL-SPECS
+        246        PROPERTIES AMINES FREE-WATER=STEAM-TA SOLU-WATER=3  &
+        247            TRUE-COMPS=YES
+        248
+        249    BLOCK B38 RADFRAC
+        250        PARAM NSTAGE=10 ALGORITHM=STANDARD MAXOL=25 DAMPING=NONE
+        251        COL-CONFIG CONDENSER=NONE
+        252        FEEDS S43 1 ON-STAGE
+        253        PRODUCTS S47 1 V / S48 10 L
+        254        P-SPEC 1 28.
+        255        COL-SPECS MOLE-D=100.
+        256        PROPERTIES AMINES FREE-WATER=STEAM-TA SOLU-WATER=3  &
+        257            TRUE-COMPS=YES
+        258
+        259    BLOCK B48 RSTOIC
+        260        PARAM TEMP=100. PRES=0.
+        261        STOIC 1 MIXED CARBMONO -1. / HYDROGEN -1. / ETHYLENE  &
+        262            -1. / PROPANAL 1.
+        263        STOIC 2 MIXED HYDROGEN -1. / ETHYLENE -1. / ETHANE 1.
+        264        CONV 1 MIXED ETHYLENE 0.99
+        265        CONV 2 MIXED ETHYLENE 0.01
+        266
+        267    BLOCK B2 RGIBBS
+        268        PARAM TEMP=850. PRES=0. MAXIT=50
+        269
+        270    BLOCK B3 RPLUG
+        271        PARAM TYPE=T-SPEC LENGTH=19.69 DIAM=3.939
+        272        REACTIONS RXN-IDS=R-1
+        273
+        274    BLOCK B34 PUMP
+        275        PARAM PRES=40. EFF=0.85
+        276
+        277    BLOCK B22 COMPR
+        278        PARAM TYPE=ASME-ISENTROP PRES=3. SEFF=0.85 SB-MAXIT=30  &
+        279            SB-TOL=0.0001
+        280
+        281    BLOCK B25 COMPR
+        282        PARAM TYPE=ASME-ISENTROP PRES=9. SB-MAXIT=30 SB-TOL=0.0001
+        283
+        284    BLOCK B28 COMPR
+        285        PARAM TYPE=ASME-ISENTROP PRES=28. SB-MAXIT=30 SB-TOL=0.0001
+        286
+        287    BLOCK B42 COMPR
+        288        PARAM TYPE=ASME-ISENTROP PRES=3. SEFF=0.85 SB-MAXIT=30  &
+        289            SB-TOL=0.0001
+        290
+        291    BLOCK B43 COMPR
+        292        PARAM TYPE=ASME-ISENTROP PRES=9. SEFF=0.85 SB-MAXIT=30  &
+        293            SB-TOL=0.0001
+        294
+        295    BLOCK B44 COMPR
+        296        PARAM TYPE=ASME-ISENTROP PRES=28. SB-MAXIT=30 SB-TOL=0.0001
+        297
+        298    BLOCK B51 COMPR
+        299        PARAM TYPE=ASME-ISENTROP PRES=2.5 SEFF=0.85 SB-MAXIT=30  &
+        300            SB-TOL=0.0001 MODEL-TYPE=COMPRESSOR
+        301        PERFOR-PARAM CALC-SPEED=NO
+        302
+        303    DESIGN-SPEC CARBONDI
+        304        DEFINE CARBONFL MOLE-FLOW STREAM=S3 SUBSTREAM=MIXED  &
+        305            COMPONENT=CARBDI UOM="kmol/hr"
+        306        DEFINE METHANEF MOLE-FLOW STREAM=S3 SUBSTREAM=MIXED  &
+        307            COMPONENT=METHANE UOM="kmol/hr"
+        308        SPEC "CARBONFL" TO "METHANEF"
+        309        TOL-SPEC "1e-4"
+        310        VARY MOLE-FLOW STREAM=CARBONDI SUBSTREAM=MIXED  &
+        311            COMPONENT=CARBDI UOM="kmol/hr"
+        312        LIMITS "0" "1e8"
+        313
+        314    DESIGN-SPEC ETHYLFLO
+        315        DEFINE ETHYLENE MOLE-FLOW STREAM=S59 SUBSTREAM=MIXED  &
+        316            COMPONENT=ETHYLENE UOM="kmol/hr"
+        317        DEFINE COFLOW MOLE-FLOW STREAM=S59 SUBSTREAM=MIXED  &
+        318            COMPONENT=CARBMONO UOM="kmol/hr"
+        319        SPEC "ETHYLENE" TO "COFLOW"
+        320        TOL-SPEC "1e-4"
+        321        VARY MASS-FLOW STREAM=ETHYLENE SUBSTREAM=MIXED  &
+        322            COMPONENT=ETHYLENE UOM="kg/hr"
+        323        LIMITS "0" "1e7"
+        324
+        325    DESIGN-SPEC HYDROFLO
+        326        DEFINE HYDROFLO MOLE-FLOW STREAM=S59 SUBSTREAM=MIXED  &
+        327            COMPONENT=HYDROGEN UOM="kmol/hr"
+        328        DEFINE COFLO MOLE-FLOW STREAM=S59 SUBSTREAM=MIXED  &
+        329            COMPONENT=CARBMONO UOM="kmol/hr"
+        330        SPEC "HYDROFLO" TO "COFLO"
+        331        TOL-SPEC "1e-4"
+        332        VARY MOLE-FLOW STREAM=ETHYLENE SUBSTREAM=MIXED  &
+        333            COMPONENT=HYDROGEN UOM="kmol/hr"
+        334        LIMITS "0" "1e6"
+        335
+        336    DESIGN-SPEC MEAFLOW
+        337        DEFINE MEAFLOW MASS-FLOW STREAM=S45 SUBSTREAM=MIXED  &
+        338            COMPONENT=MEA UOM="kg/hr"
+        339        SPEC "MEAFLOW" TO "4000*0.3"
+        340        TOL-SPEC "1E-4"
+        341        VARY MASS-FLOW STREAM=FRESHMEA SUBSTREAM=MIXED COMPONENT=MEA  &
+        342            UOM="kg/hr"
+        343        LIMITS "0" "1E7"
+        344
+        345    DESIGN-SPEC WATERFLO
+        346        DEFINE WATERFLO MASS-FLOW STREAM=S45 SUBSTREAM=MIXED  &
+        347            COMPONENT=WATER UOM="kg/hr"
+        348        SPEC "WATERFLO" TO "4000*0.7"
+        349        TOL-SPEC "1E-4"
+        350        VARY MASS-FLOW STREAM=FRESHWAT SUBSTREAM=MIXED  &
+        351            COMPONENT=WATER UOM="kg/hr"
+        352        LIMITS "0" "1E7"
+        353
+        354    EO-CONV-OPTI
+        355
+        356    STREAM-REPOR MOLEFLOW
+        357
+        358    PROPERTY-REP PCES
+        359
+        360    REACTIONS R-1 GENERAL
+        361        REAC-DATA 1 NAME=HYDRO PHASE=V CBASIS=PARTIALPRES  &
+        362            RBASIS=REAC-VOL RATE-UNITV="KMOL/CUM-HR" PRES-UNIT= &
+        363            "BAR"
+        364        RATE-CON 1 PRE-EXP=175914.8375 ACT-ENERGY=7.81
+        365        STOIC 1 MIXED HYDROGEN -1. / PROPANAL -1. / PROPANOL 1.
+        366        DFORCE-EXP 1 MIXED HYDROGEN 1. / MIXED PROPANAL -0.5
+        367    ;
+        368    ;
+        369    ;
+        370    ;
+        371    ;
+ *** INPUT TRANSLATOR MESSAGES ***
+
+  *** THIS RUN USES THE PROPERTIES ENTERPRISE DATABASE ***
+      SQLLOCALDB.APESV121 : (DATAVERSION - 39.0.0.5)                          
+      SQLLOCALDB.APV121 : (DATAVERSION - 39.0.0.3)                            
+      SQLLOCALDB.FACTV121 : (DATAVERSION - 39.0.0.3)                          
+      SQLLOCALDB.NISTV121 : (DATAVERSION - 39.0.0.3)                          
+
+      INFORMATION WHILE CHECKING INPUT SPECIFICATIONS                           
+      BLOCK NAME: B3    MODEL NAME: RPLUG                      (ZURE04.21)      
+      THE REACTOR TYPE IS "SPECIFIED TEMPERATURE" AND NO TEMPERATURE            
+      IS GIVEN WITH A "T-SPEC" SENTENCE. THE REACTOR TEMPERATURE                
+      WILL BE SET TO THE (MIXED) INLET TEMPERATURE.                             
+
+  *   WARNING WHILE CHECKING INPUT SPECIFICATIONS              (PRPCHK.1)       
+      INCONSISTENT PROPERTIES DETECTED FOR 5 STREAMS                            
+      SOURCE BLOCK        PROPERTIES STREAM   DESTINATION BLOCK   PROPERTIES    
+      =================== ========== ======== =================== ==========    
+      B30                 PENG-ROB   S38      B32                 AMINES        
+      B34                 PENG-ROB   S41      B32                 AMINES        
+      B38                 AMINES     S48      B33                 PENG-ROB      
+      B38                 AMINES     S47      B39                 PENG-ROB      
+      B32                 AMINES     SYNGAS   B41                 PENG-ROB      
+ 
+ DESIGN SPEC: CARBONDI WILL BE INTERPRETED 
+ DESIGN SPEC: ETHYLFLO WILL BE INTERPRETED 
+ DESIGN SPEC: HYDROFLO WILL BE INTERPRETED 
+ DESIGN SPEC: MEAFLOW WILL BE INTERPRETED 
+ DESIGN SPEC: WATERFLO WILL BE INTERPRETED 
+ 
+
+ PDF updated                                                                      TIME =      0.71
+
+ *** CALCULATION TRACE ***
+
+
+ *** FLOWSHEET ANALYSIS MESSAGES ***
+
+ FLOWSHEET CONNECTIVITY BY STREAMS       
+
+   STREAM     SOURCE     DEST           STREAM     SOURCE     DEST
+   BIOGAS     ----       B1             CARBONDI   ----       B1      
+   FRESHWAT   ----       B33            FRESHMEA   ----       B33     
+   ETHYLENE   ----       B42            HYDRO2     ----       B51     
+   S3         B1         B7             S8         B2         B20     
+   S9         B7         B2             S25        B20        B21     
+   S26        B21        B22            S28        B21        B31     
+   S27        B22        B23            S29        B23        B24     
+   S30        B24        B25            S31        B24        B31     
+   S32        B25        B26            S33        B26        B27     
+   S34        B27        B28            S35        B27        B31     
+   S36        B28        B29            S37        B29        B30     
+   S38        B30        B32            S39        B30        B31     
+   WASTEWAT   B31        ----           SYNGAS     B32        B41     
+   S43        B32        B38            S45        B33        B35     
+   S41        B34        B32            S46        B35        B34     
+   S47        B38        B39            S48        B38        B33     
+   S49        B39        B40            S50        B40        B1      
+   S51        B40        B31            S59        B41        B47     
+   S54        B42        B45            S56        B43        B46     
+   S58        B44        B41            S55        B45        B43     
+   S57        B46        B44            S60        B47        B48     
+   S61        B48        B49            S62        B49        B50     
+   S66        B50        B3             S64        B51        B52     
+   S65        B52        B50            S1         B3         B4      
+   S2         B4         B5             S4         B5         ----    
+   PROPANOL   B5         ----                                         
+
+ FLOWSHEET CONNECTIVITY BY BLOCKS        
+
+   BLOCK        INLETS                         OUTLETS
+   B1           CARBONDI BIOGAS S50            S3                          
+   B2           S9                             S8                          
+   B7           S3                             S9                          
+   B20          S8                             S25                         
+   B21          S25                            S26 S28                     
+   B22          S26                            S27                         
+   B23          S27                            S29                         
+   B24          S29                            S30 S31                     
+   B25          S30                            S32                         
+   B26          S32                            S33                         
+   B27          S33                            S34 S35                     
+   B28          S34                            S36                         
+   B29          S36                            S37                         
+   B30          S37                            S38 S39                     
+   B31          S39 S35 S31 S51 S28            WASTEWAT                    
+   B32          S38 S41                        SYNGAS S43                  
+   B33          FRESHMEA S48 FRESHWAT          S45                         
+   B34          S46                            S41                         
+   B35          S45                            S46                         
+   B38          S43                            S47 S48                     
+   B39          S47                            S49                         
+   B40          S49                            S50 S51                     
+   B41          S58 SYNGAS                     S59                         
+   B42          ETHYLENE                       S54                         
+   B43          S55                            S56                         
+   B44          S57                            S58                         
+   B45          S54                            S55                         
+   B46          S56                            S57                         
+   B47          S59                            S60                         
+   B48          S60                            S61                         
+   B49          S61                            S62                         
+   B50          S62 S65                        S66                         
+   B51          HYDRO2                         S64                         
+   B52          S64                            S65                         
+   B3           S66                            S1                          
+   B4           S1                             S2                          
+   B5           S2                             S4 PROPANOL                 
+
+      BLOCK $OLVER01 (METHOD: WEGSTEIN) HAS BEEN DEFINED TO CONVERGE
+               STREAMS: S43
+
+      BLOCK $OLVER02 (METHOD: SECANT  ) HAS BEEN DEFINED TO CONVERGE
+                SPECS : CARBONDI
+
+      BLOCK $OLVER03 (METHOD: SECANT  ) HAS BEEN DEFINED TO CONVERGE
+                SPECS : ETHYLFLO
+
+      BLOCK $OLVER04 (METHOD: SECANT  ) HAS BEEN DEFINED TO CONVERGE
+                SPECS : HYDROFLO
+
+      BLOCK $OLVER05 (METHOD: SECANT  ) HAS BEEN DEFINED TO CONVERGE
+                SPECS : MEAFLOW
+
+      BLOCK $OLVER06 (METHOD: SECANT  ) HAS BEEN DEFINED TO CONVERGE
+                SPECS : WATERFLO
+
+      COMPUTATION ORDER FOR THE FLOWSHEET IS:
+      B51 B52 
+      $OLVER01 B38 
+      |  $OLVER06 
+      |  |  $OLVER05 B33 
+      |  |  (RETURN $OLVER05) 
+      |  (RETURN $OLVER06) 
+      |  B35 B34 B39 B40 
+      |  $OLVER02 B1 
+      |  (RETURN $OLVER02) 
+      |  B7 B2 B20 B21 B22 B23 B24 B25 B26 B27 B28 B29 B30 B32 
+      (RETURN $OLVER01) 
+      $OLVER03 
+      |  $OLVER04 B42 B45 B43 B46 B44 B41 
+      |  (RETURN $OLVER04) 
+      (RETURN $OLVER03) 
+      B47 B48 B49 B50 B3 B4 B5 B31 
+
+Calculations begin                                                              time      0.02
+
+
+ SIMULATION CALCULATIONS BEGIN                                                    TIME =      0.02
+
+      ENTHALPY CALCULATION FOR INLET STREAM HYDRO2 OF BLOCK B51                   TIME =      0.02
+      KODE = 2  NTRIAL =   0  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B51      MODEL: COMPR                                             TIME =      0.02
+      OUTLET TEMP =   403.5       OUTLET PRES =  0.2500E+06   INDICATED HP =  0.1761E+06   BRAKE HP =  0.1761E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B52      MODEL: HEATER                                            TIME =      0.02
+      KODE = 2  NTRIAL =   0  T = 448.1500  P =  250000.      V =  1.00000      Q =  75271.3    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.02
+      ITER   0 For Tear Streams: S43
+
+      UOS BLOCK B38      MODEL: RADFRAC                                           TIME =      0.02
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")   
+                                                               (UDL3II.7060)    
+      ZERO FEED - BLOCK BYPASSED.                                               
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.02
+     SPECS: WATERFLO
+
+      ENTHALPY CALCULATION FOR INLET STREAM FRESHWAT OF BLOCK B33                 TIME =      0.02
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.02
+     SPECS: MEAFLOW
+
+      ENTHALPY CALCULATION FOR INLET STREAM FRESHMEA OF BLOCK B33                 TIME =      0.02
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.02
+      NO. TEMP ITER =    5     TEMP =  293.496    
+      KODE = 1  NTRIAL =   3  T = 293.4956  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.02
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-3.252620E-08
+      SPEC   1 ERROR =   18800.     OLD X =  0.90950E-01 NEW X =  0.54570    
+
+  LOOP $OLVER05 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.18800E+09    TIME =      0.02
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.03
+      NO. TEMP ITER =    5     TEMP =  278.411    
+      KODE = 1  NTRIAL =   3  T = 278.4105  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.03
+      ITER   2 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.626310E-10
+      SPEC   1 ERROR =  0.11880E+06 OLD X =  0.54570     NEW X =  0.54570E-02
+
+  LOOP $OLVER05 ITER    2:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.11880E+10    TIME =      0.03
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.03
+      NO. TEMP ITER =    5     TEMP =  297.850    
+      KODE = 1  NTRIAL =   3  T = 297.8496  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.03
+      ITER   3 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.626310E-10
+      SPEC   1 ERROR = -0.34106E-11                          X =  0.54570E-02
+
+  LOOP $OLVER05 ITER    3:     *** CONVERGED *** , MAX ERR/TOL    -0.34106E-07    TIME =      0.03
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.03
+      ITER   0 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR =  0.35751E+06 OLD X =   5.5556     NEW X =   7.0975    
+
+  LOOP $OLVER06 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.35751E+10    TIME =      0.03
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.03
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.626310E-10
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.03
+      NO. TEMP ITER =    5     TEMP =  297.915    
+      KODE = 1  NTRIAL =   3  T = 297.9146  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.03
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.626310E-10
+      SPEC   1 ERROR = -0.34106E-11                          X =  0.54570E-02
+
+  LOOP $OLVER05 ITER    1:     *** CONVERGED *** , MAX ERR/TOL    -0.34106E-07    TIME =      0.03
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.03
+      ITER   2 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR =  0.45751E+06 OLD X =   7.0975     NEW X =  0.43173E-01
+
+  LOOP $OLVER06 ITER    2:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.45751E+10    TIME =      0.03
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.03
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.626310E-10
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.03
+      NO. TEMP ITER =    5     TEMP =  275.310    
+      KODE = 1  NTRIAL =   3  T = 275.3099  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.03
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.626310E-10
+      SPEC   1 ERROR = -0.34106E-11                          X =  0.54570E-02
+
+  LOOP $OLVER05 ITER    1:     *** CONVERGED *** , MAX ERR/TOL    -0.34106E-07    TIME =      0.03
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.03
+      ITER   3 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR =  0.16371E-09                          X =  0.43173E-01
+
+  LOOP $OLVER06 ITER    3:     *** CONVERGED *** , MAX ERR/TOL     0.16371E-05    TIME =      0.03
+
+      UOS BLOCK B35      MODEL: HEATER                                            TIME =      0.03
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  100000.      V =  0.00000      Q =  160743.    
+
+      UOS BLOCK B34      MODEL: PUMP                                              TIME =      0.03
+      VOL-FLOW   =  0.1131E-02 , DELTA P    =  0.3900E+07 , PUMP EFF   =  0.8500    
+      FLUID PWR  =   4412.     , BRAKE PWR  =   5191.     , ELEC PWR   =   5191.    
+
+      UOS BLOCK B39      MODEL: HEATER                                            TIME =      0.03
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B39" (MODEL: "HEATER")    
+                                                               (UHE01.4)        
+      ZERO FEED TO THE BLOCK.  BLOCK BYPASSED                                   
+
+      UOS BLOCK B40      MODEL: FLASH2                                            TIME =      0.03
+
+  *   WARNING WHILE EXECUTING UNIT OPERATIONS BLOCK: "B40" (MODEL: "FLASH2")    
+                                                               (UFL01I.1)       
+      ZERO FEED TO THE BLOCK.  BLOCK BYPASSED                                   
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.03
+     SPECS: CARBONDI
+
+      ENTHALPY CALCULATION FOR INLET STREAM CARBONDI OF BLOCK B1                  TIME =      0.03
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      ENTHALPY CALCULATION FOR INLET STREAM BIOGAS OF BLOCK B1                    TIME =      0.03
+      KODE = 2  NTRIAL =   4  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.03
+      NO. TEMP ITER =    5     TEMP =  298.138    
+      KODE = 1  NTRIAL =   4  T = 298.1383  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.03
+      ITER   0 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+      SPEC   1 ERROR =   973.24     OLD X =  0.27778     NEW X =   278.06    
+
+  LOOP $OLVER02 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.97324E+07    TIME =      0.03
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.03
+      NO. TEMP ITER =    5     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.03
+      ITER   2 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+      SPEC   1 ERROR =  0.10010E+07 OLD X =   278.06     NEW X =  0.74331E-02
+
+  LOOP $OLVER02 ITER    2:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.10010E+11    TIME =      0.03
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.03
+      NO. TEMP ITER =    5     TEMP =  298.140    
+      KODE = 1  NTRIAL =   5  T = 298.1405  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.03
+      ITER   3 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+      SPEC   1 ERROR = -0.85265E-13                          X =  0.74331E-02
+
+  LOOP $OLVER02 ITER    3:     *** CONVERGED *** , MAX ERR/TOL    -0.85265E-09    TIME =      0.04
+
+      UOS BLOCK B7       MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   0  T =1123.1500  P =  100000.      V =  1.00000      Q = 2.660353E+06
+
+      UOS BLOCK B2       MODEL: RGIBBS                                            TIME =      0.04
+      ITER =    15  T = 1123.1500  P =   100000.      PHASES = VAPOR
+
+      UOS BLOCK B20      MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  1.00000      Q =-3.013771E+06
+
+      UOS BLOCK B21      MODEL: FLASH2                                            TIME =      0.04
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B22      MODEL: COMPR                                             TIME =      0.04
+      OUTLET TEMP =   426.0       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.4429E+06   BRAKE HP =  0.4429E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B23      MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  300000.      V =  1.00000      Q = -443566.    
+
+      UOS BLOCK B24      MODEL: FLASH2                                            TIME =      0.04
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  300000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B25      MODEL: COMPR                                             TIME =      0.04
+      OUTLET TEMP =   448.9       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.5235E+06   BRAKE HP =  0.5235E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B26      MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  900000.      V = 0.995757      Q = -548318.    
+
+      UOS BLOCK B27      MODEL: FLASH2                                            TIME =      0.04
+      KODE = 1  NTRIAL =   4  T = 298.1500  P =  900000.      V = 0.995757      Q =  0.00000    
+
+      UOS BLOCK B28      MODEL: COMPR                                             TIME =      0.04
+      OUTLET TEMP =   454.9       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.5439E+06   BRAKE HP =  0.5439E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =  0.9998    
+
+      UOS BLOCK B29      MODEL: HEATER                                            TIME =      0.04
+      KODE = 2  NTRIAL =   3  T = 298.1500  P = 2.800000E+06  V = 0.998050      Q = -559893.    
+
+      UOS BLOCK B30      MODEL: FLASH2                                            TIME =      0.04
+      KODE = 1  NTRIAL =   4  T = 298.1500  P = 2.800000E+06  V = 0.998050      Q =  0.00000    
+
+      UOS BLOCK B32      MODEL: RADFRAC                                           TIME =      0.04
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B32" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B32" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    1      29.010    
+          2    1   10      23.606    
+          3    1   10      7.0138    
+          4    1   10      2.6088    
+          5    1   10     0.57330E+12
+          6    1   10     0.17536E+10
+          7    1   10     0.22345E+13
+          8    1   10     0.50060E+13
+          9    1   10     0.12029E+12
+         10    1   10     0.23357E+09
+         11    1   10      19037.    
+         12    1   10      25135.    
+         13    1   10      15275.    
+         14    1   10      22362.    
+         15    1   10      11197.    
+         16    1   10      5720.3    
+         17    1    8      3010.7    
+         18    1   10     0.41697E+10
+         19    1   10     0.17654E+07
+         20    1   10     0.72559E+07
+         21    1   10     0.25904E+08
+         22    1   10     0.48819E+09
+         23    1   10     0.17525E+12
+         24    1   10     0.14650E+08
+         25    1   10     0.65711E+09
+         26    1   10     0.74737E+06
+         27    1   10      19236.    
+         28    1   10     0.37730E+06
+         29    1   10      15999.    
+         30    1   10      10111.    
+         31    1   10      18600.    
+         32    1   10      9411.5    
+         33    1   10      4818.4    
+         34    1   10      108.41    
+         35    1   10      119.32    
+         36    1   10      97.985    
+         37    1   10     0.20249E+12
+         38    1   10     0.22947E+10
+         39    1   10     0.16549E+12
+         40    1   10     0.55644E+06
+         41    1   10     0.34477E+07
+         42    1   10      24042.    
+         43    1   10      21977.    
+         44    1   10      17962.    
+         45    1   10      9044.7    
+         46    1   10      4701.4    
+         47    1   10      116.79    
+         48    1   10      80.715    
+         49    1   10      41.772    
+         50    1   10      24.783    
+         51    1   10      15.772    
+         52    1   10      3.3103    
+         53    1   10      2.0544    
+         54    1   10      3.1681    
+         55    1   10     0.24529    
+         56    1    9     0.19638    
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.09
+      ITER   1 For Tear Streams: S43
+
+      --FLASH TEAR STREAM S43     
+      KODE = 1  NTRIAL =  12  T = 315.8895  P = 2.800000E+06  V = 9.795659E-09  Q =  0.00000    
+
+  LOOP $OLVER01 ITER    1:  10 VARS NOT CONVERGED, MAX ERR/TOL     0.10000E+07    TIME =      0.09
+
+      UOS BLOCK B38      MODEL: RADFRAC                                           TIME =      0.09
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   44.8 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   44.8 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    4      1321.7    
+          2    1    2      6794.1    
+          3    1    2      51.786    
+          4    1    3      15.029    
+          5    1    3      5.4200    
+          6    1    2      2.2176    
+          7    1    2      1.1763    
+          8    1    2     0.83519    
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.10
+      ITER   0 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.10
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.626310E-10
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.10
+      NO. TEMP ITER =    4     TEMP =  352.605    
+      KODE = 1  NTRIAL =   2  T = 352.6049  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.10
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.437691E-11
+      SPEC   1 ERROR =   1093.9     OLD X =  0.54570E-02 NEW X =  0.48241E-03
+
+  LOOP $OLVER05 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.10939E+08    TIME =      0.11
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.11
+      NO. TEMP ITER =    4     TEMP =  370.081    
+      KODE = 1  NTRIAL =   2  T = 370.0814  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.11
+      ITER   2 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.437691E-11
+      SPEC   1 ERROR =   0.0000                              X =  0.48241E-03
+
+  LOOP $OLVER05 ITER    2:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.11
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.11
+      ITER   1 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR =   1049.4     OLD X =  0.43173E-01 NEW X =  0.26992E-01
+
+  LOOP $OLVER06 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.10494E+08    TIME =      0.11
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.11
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.437691E-11
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.11
+      KODE = 1  NTRIAL =   5  T = 373.8544  P =  100000.      V = 4.314750E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.11
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.437691E-11
+      SPEC   1 ERROR =   0.0000                              X =  0.48241E-03
+
+  LOOP $OLVER05 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.11
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.11
+      ITER   2 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR =   0.0000                              X =  0.26992E-01
+
+  LOOP $OLVER06 ITER    2:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.11
+
+      UOS BLOCK B35      MODEL: HEATER                                            TIME =      0.11
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  100000.      V =  0.00000      Q = -349300.    
+
+      UOS BLOCK B34      MODEL: PUMP                                              TIME =      0.11
+      VOL-FLOW   =  0.1131E-02 , DELTA P    =  0.3900E+07 , PUMP EFF   =  0.8500    
+      FLUID PWR  =   4412.     , BRAKE PWR  =   5191.     , ELEC PWR   =   5191.    
+
+      UOS BLOCK B39      MODEL: HEATER                                            TIME =      0.11
+      KODE = 2  NTRIAL =   3  T = 313.1500  P = 2.800000E+06  V = 2.886050E-02  Q =-1.365564E+06
+
+      UOS BLOCK B40      MODEL: FLASH2                                            TIME =      0.11
+      KODE = 1  NTRIAL =  11  T = 313.1500  P = 2.800000E+06  V = 2.886050E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.11
+      ITER   0 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.11
+      NO. TEMP ITER =    5     TEMP =  297.932    
+      KODE = 1  NTRIAL =   6  T = 297.9322  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.11
+      ITER   1 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+      SPEC   1 ERROR =   2.8756     OLD X =  0.74331E-02 NEW X =  0.66343E-02
+
+  LOOP $OLVER02 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL      28756.        TIME =      0.11
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.11
+      NO. TEMP ITER =    5     TEMP =  297.930    
+      KODE = 1  NTRIAL =   6  T = 297.9302  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.11
+      ITER   2 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+      SPEC   1 ERROR =   0.0000                              X =  0.66343E-02
+
+  LOOP $OLVER02 ITER    2:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.11
+
+      UOS BLOCK B7       MODEL: HEATER                                            TIME =      0.11
+      KODE = 2  NTRIAL =   0  T =1123.1500  P =  100000.      V =  1.00000      Q = 2.660942E+06
+
+      UOS BLOCK B2       MODEL: RGIBBS                                            TIME =      0.11
+      ITER =    16  T = 1123.1500  P =   100000.      PHASES = VAPOR
+
+      UOS BLOCK B20      MODEL: HEATER                                            TIME =      0.11
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  1.00000      Q =-3.013921E+06
+
+      UOS BLOCK B21      MODEL: FLASH2                                            TIME =      0.11
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   3  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B22      MODEL: COMPR                                             TIME =      0.11
+      OUTLET TEMP =   426.0       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.4429E+06   BRAKE HP =  0.4429E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B23      MODEL: HEATER                                            TIME =      0.11
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  300000.      V =  1.00000      Q = -443585.    
+
+      UOS BLOCK B24      MODEL: FLASH2                                            TIME =      0.11
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  300000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B25      MODEL: COMPR                                             TIME =      0.11
+      OUTLET TEMP =   448.9       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.5235E+06   BRAKE HP =  0.5235E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B26      MODEL: HEATER                                            TIME =      0.11
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  900000.      V = 0.995751      Q = -548373.    
+
+      UOS BLOCK B27      MODEL: FLASH2                                            TIME =      0.11
+      KODE = 1  NTRIAL =   4  T = 298.1500  P =  900000.      V = 0.995751      Q =  0.00000    
+
+      UOS BLOCK B28      MODEL: COMPR                                             TIME =      0.12
+      OUTLET TEMP =   454.9       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.5439E+06   BRAKE HP =  0.5439E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =  0.9998    
+
+      UOS BLOCK B29      MODEL: HEATER                                            TIME =      0.12
+      KODE = 2  NTRIAL =   4  T = 298.1500  P = 2.800000E+06  V = 0.998049      Q = -559914.    
+
+      UOS BLOCK B30      MODEL: FLASH2                                            TIME =      0.12
+      KODE = 1  NTRIAL =   5  T = 298.1500  P = 2.800000E+06  V = 0.998049      Q =  0.00000    
+
+      UOS BLOCK B32      MODEL: RADFRAC                                           TIME =      0.12
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    5     0.24815E-01
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.12
+      ITER   2 For Tear Streams: S43
+
+      --FLASH TEAR STREAM S43     
+      NO. TEMP ITER =    5     TEMP =  315.899    
+      KODE = 1  NTRIAL =   3  T = 315.8991  P = 2.800000E+06  V =  0.00000      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    2:   2 VARS NOT CONVERGED, MAX ERR/TOL     -42.744        TIME =      0.12
+
+      UOS BLOCK B38      MODEL: RADFRAC                                           TIME =      0.12
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    2     0.49554E-01
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.12
+      ITER   0 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.12
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.437691E-11
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.12
+      KODE = 1  NTRIAL =   1  T = 373.8544  P =  100000.      V = 4.315213E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.12
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.436859E-11
+      SPEC   1 ERROR =  0.60833E-01 OLD X =  0.48241E-03 NEW X =  0.48213E-03
+
+  LOOP $OLVER05 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL      608.33        TIME =      0.12
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.12
+      KODE = 1  NTRIAL =   1  T = 373.8544  P =  100000.      V = 4.315558E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.12
+      ITER   2 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-2.873733E-11
+      SPEC   1 ERROR = -0.56536E-03 OLD X =  0.48213E-03 NEW X =  0.48213E-03
+
+  LOOP $OLVER05 ITER    2:   1 VARS NOT CONVERGED, MAX ERR/TOL     -5.6536        TIME =      0.16
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.16
+      KODE = 1  NTRIAL =   1  T = 373.8544  P =  100000.      V = 4.315555E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.16
+      ITER   3 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-2.873733E-11
+      SPEC   1 ERROR =  0.22737E-12                          X =  0.48213E-03
+
+  LOOP $OLVER05 ITER    3:     *** CONVERGED *** , MAX ERR/TOL     0.22737E-08    TIME =      0.16
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.16
+      ITER   1 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR =  0.31247E-01 OLD X =  0.26992E-01 NEW X =  0.26992E-01
+
+  LOOP $OLVER06 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL      312.47        TIME =      0.16
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.16
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-2.873733E-11
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.16
+      KODE = 1  NTRIAL =   1  T = 373.8544  P =  100000.      V = 4.315764E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.16
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-2.873733E-11
+      SPEC   1 ERROR =  0.22737E-12                          X =  0.48213E-03
+
+  LOOP $OLVER05 ITER    1:     *** CONVERGED *** , MAX ERR/TOL     0.22737E-08    TIME =      0.16
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.16
+      ITER   2 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR = -0.71839E-04                          X =  0.26992E-01
+
+  LOOP $OLVER06 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.71839        TIME =      0.16
+
+      UOS BLOCK B35      MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  100000.      V =  0.00000      Q = -349320.    
+
+      UOS BLOCK B34      MODEL: PUMP                                              TIME =      0.16
+      VOL-FLOW   =  0.1131E-02 , DELTA P    =  0.3900E+07 , PUMP EFF   =  0.8500    
+      FLUID PWR  =   4412.     , BRAKE PWR  =   5191.     , ELEC PWR   =   5191.    
+
+      UOS BLOCK B39      MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   1  T = 313.1500  P = 2.800000E+06  V = 2.888238E-02  Q =-1.365539E+06
+
+      UOS BLOCK B40      MODEL: FLASH2                                            TIME =      0.16
+      KODE = 1  NTRIAL =   1  T = 313.1500  P = 2.800000E+06  V = 2.888238E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.16
+      ITER   0 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    5     TEMP =  297.930    
+      KODE = 1  NTRIAL =   6  T = 297.9300  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.16
+      ITER   1 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q = 3.953991E-10
+      SPEC   1 ERROR =  0.21817E-02 OLD X =  0.66343E-02 NEW X =  0.66337E-02
+
+  LOOP $OLVER02 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL      21.817        TIME =      0.16
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.16
+      NO. TEMP ITER =    5     TEMP =  297.930    
+      KODE = 1  NTRIAL =   6  T = 297.9300  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.16
+      ITER   2 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q = 3.953991E-10
+      SPEC   1 ERROR = -0.62676E-08                          X =  0.66337E-02
+
+  LOOP $OLVER02 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.62676E-04    TIME =      0.16
+
+      UOS BLOCK B7       MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   0  T =1123.1500  P =  100000.      V =  1.00000      Q = 2.660942E+06
+
+      UOS BLOCK B2       MODEL: RGIBBS                                            TIME =      0.16
+      ITER =     2  T = 1123.1500  P =   100000.      PHASES = VAPOR
+
+      UOS BLOCK B20      MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  1.00000      Q =-3.013921E+06
+
+      UOS BLOCK B21      MODEL: FLASH2                                            TIME =      0.16
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   3  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B22      MODEL: COMPR                                             TIME =      0.16
+      OUTLET TEMP =   426.0       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.4429E+06   BRAKE HP =  0.4429E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B23      MODEL: HEATER                                            TIME =      0.16
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  300000.      V =  1.00000      Q = -443585.    
+
+      UOS BLOCK B24      MODEL: FLASH2                                            TIME =      0.17
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  300000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B25      MODEL: COMPR                                             TIME =      0.17
+      OUTLET TEMP =   448.9       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.5235E+06   BRAKE HP =  0.5235E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B26      MODEL: HEATER                                            TIME =      0.17
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  900000.      V = 0.995751      Q = -548373.    
+
+      UOS BLOCK B27      MODEL: FLASH2                                            TIME =      0.17
+      KODE = 1  NTRIAL =   1  T = 298.1500  P =  900000.      V = 0.995751      Q =  0.00000    
+
+      UOS BLOCK B28      MODEL: COMPR                                             TIME =      0.17
+      OUTLET TEMP =   454.9       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.5439E+06   BRAKE HP =  0.5439E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =  0.9998    
+
+      UOS BLOCK B29      MODEL: HEATER                                            TIME =      0.17
+      KODE = 2  NTRIAL =   1  T = 298.1500  P = 2.800000E+06  V = 0.998049      Q = -559914.    
+
+      UOS BLOCK B30      MODEL: FLASH2                                            TIME =      0.17
+      KODE = 1  NTRIAL =   1  T = 298.1500  P = 2.800000E+06  V = 0.998049      Q =  0.00000    
+
+      UOS BLOCK B32      MODEL: RADFRAC                                           TIME =      0.17
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    1     0.11257E-03
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.17
+      ITER   3 For Tear Streams: S43
+
+      --FLASH TEAR STREAM S43     
+      NO. TEMP ITER =    6     TEMP =  315.899    
+      KODE = 1  NTRIAL =   3  T = 315.8992  P = 2.800000E+06  V =  0.00000      Q =  0.00000    
+
+  LOOP $OLVER01 ITER    3:   1 VARS NOT CONVERGED, MAX ERR/TOL      4.7285        TIME =      0.17
+
+      UOS BLOCK B38      MODEL: RADFRAC                                           TIME =      0.18
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    1     0.29635E-01
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE EXECUTING UNIT OPERATIONS       
+      BLOCK: "B38" (MODEL: "RADFRAC")                          (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.18
+      ITER   0 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.18
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-2.873733E-11
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.18
+      KODE = 1  NTRIAL =   1  T = 373.8544  P =  100000.      V = 4.315764E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.18
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.436872E-11
+      SPEC   1 ERROR = -0.38126E-03 OLD X =  0.48213E-03 NEW X =  0.48213E-03
+
+  LOOP $OLVER05 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     -3.8126        TIME =      0.23
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.23
+      KODE = 1  NTRIAL =   1  T = 373.8544  P =  100000.      V = 4.315762E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.23
+      ITER   2 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.436872E-11
+      SPEC   1 ERROR = -0.22737E-12                          X =  0.48213E-03
+
+  LOOP $OLVER05 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.22737E-08    TIME =      0.23
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.23
+      ITER   1 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR =  0.10509E-03 OLD X =  0.26992E-01 NEW X =  0.26992E-01
+
+  LOOP $OLVER06 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL      1.0509        TIME =      0.23
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.23
+      ITER   0 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.436872E-11
+
+      UOS BLOCK B33      MODEL: MIXER                                             TIME =      0.23
+      KODE = 1  NTRIAL =   1  T = 373.8544  P =  100000.      V = 4.315762E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER05  METHOD: SECANT                                  TIME =      0.23
+      ITER   1 For Specs:        MEAFLOW
+      ---FLASH STREAM FRESHMEA:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =-1.436872E-11
+      SPEC   1 ERROR = -0.22737E-12                          X =  0.48213E-03
+
+  LOOP $OLVER05 ITER    1:     *** CONVERGED *** , MAX ERR/TOL    -0.22737E-08    TIME =      0.23
+
+      CONVERGENCE BLOCK $OLVER06  METHOD: SECANT                                  TIME =      0.23
+      ITER   2 For Specs:        WATERFLO
+      ---FLASH STREAM FRESHWAT:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  0.00000      Q =  0.00000    
+      SPEC   1 ERROR = -0.31296E-08                          X =  0.26992E-01
+
+  LOOP $OLVER06 ITER    2:     *** CONVERGED *** , MAX ERR/TOL    -0.31296E-04    TIME =      0.23
+
+      UOS BLOCK B35      MODEL: HEATER                                            TIME =      0.23
+      KODE = 2  NTRIAL =   3  T = 313.1500  P =  100000.      V =  0.00000      Q = -349320.    
+
+      UOS BLOCK B34      MODEL: PUMP                                              TIME =      0.23
+      VOL-FLOW   =  0.1131E-02 , DELTA P    =  0.3900E+07 , PUMP EFF   =  0.8500    
+      FLUID PWR  =   4412.     , BRAKE PWR  =   5191.     , ELEC PWR   =   5191.    
+
+      UOS BLOCK B39      MODEL: HEATER                                            TIME =      0.23
+      KODE = 2  NTRIAL =   1  T = 313.1500  P = 2.800000E+06  V = 2.888238E-02  Q =-1.365539E+06
+
+      UOS BLOCK B40      MODEL: FLASH2                                            TIME =      0.23
+      KODE = 1  NTRIAL =   1  T = 313.1500  P = 2.800000E+06  V = 2.888238E-02  Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.23
+      ITER   0 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q = 3.953991E-10
+
+      UOS BLOCK B1       MODEL: MIXER                                             TIME =      0.23
+      NO. TEMP ITER =    5     TEMP =  297.930    
+      KODE = 1  NTRIAL =   6  T = 297.9300  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER02  METHOD: SECANT                                  TIME =      0.23
+      ITER   1 For Specs:        CARBONDI
+      ---FLASH STREAM CARBONDI:
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  100000.      V =  1.00000      Q = 3.953991E-10
+      SPEC   1 ERROR =  0.31812E-06                          X =  0.66337E-02
+
+  LOOP $OLVER02 ITER    1:     *** CONVERGED *** , MAX ERR/TOL     0.31812E-02    TIME =      0.23
+
+      UOS BLOCK B7       MODEL: HEATER                                            TIME =      0.23
+      KODE = 2  NTRIAL =   0  T =1123.1500  P =  100000.      V =  1.00000      Q = 2.660942E+06
+
+      UOS BLOCK B2       MODEL: RGIBBS                                            TIME =      0.23
+      ITER =     1  T = 1123.1500  P =   100000.      PHASES = VAPOR
+
+      UOS BLOCK B20      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  100000.      V =  1.00000      Q =-3.013921E+06
+
+      UOS BLOCK B21      MODEL: FLASH2                                            TIME =      0.24
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   3  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B22      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   426.0       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.4429E+06   BRAKE HP =  0.4429E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B23      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  300000.      V =  1.00000      Q = -443585.    
+
+      UOS BLOCK B24      MODEL: FLASH2                                            TIME =      0.24
+      NO. TEMP ITER =    4     TEMP =  298.150    
+      KODE = 1  NTRIAL =   2  T = 298.1500  P =  300000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B25      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   448.9       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.5235E+06   BRAKE HP =  0.5235E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B26      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   1  T = 298.1500  P =  900000.      V = 0.995751      Q = -548373.    
+
+      UOS BLOCK B27      MODEL: FLASH2                                            TIME =      0.24
+      KODE = 1  NTRIAL =   1  T = 298.1500  P =  900000.      V = 0.995751      Q =  0.00000    
+
+      UOS BLOCK B28      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   454.9       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.5439E+06   BRAKE HP =  0.5439E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =  0.9998    
+
+      UOS BLOCK B29      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   1  T = 298.1500  P = 2.800000E+06  V = 0.998049      Q = -559914.    
+
+      UOS BLOCK B30      MODEL: FLASH2                                            TIME =      0.24
+      KODE = 1  NTRIAL =   1  T = 298.1500  P = 2.800000E+06  V = 0.998049      Q =  0.00000    
+
+      UOS BLOCK B32      MODEL: RADFRAC                                           TIME =      0.24
+
+       Convergence iterations:
+         OL   ML   IL     Err/Tol
+          1    1    1     0.13829E-03
+
+      CONVERGENCE BLOCK $OLVER01  METHOD: WEGSTEIN                                TIME =      0.24
+      ITER   4 For Tear Streams: S43
+
+  LOOP $OLVER01 ITER    4:     *** CONVERGED *** , MAX ERR/TOL     0.39049E-01    TIME =      0.24
+
+      CONVERGENCE BLOCK $OLVER03  METHOD: SECANT                                  TIME =      0.24
+     SPECS: ETHYLFLO
+
+      ENTHALPY CALCULATION FOR INLET STREAM ETHYLENE OF BLOCK B42                 TIME =      0.24
+      KODE = 2  NTRIAL =   0  T = 298.1500  P =  100000.      V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.24
+     SPECS: HYDROFLO
+
+      UOS BLOCK B42      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   374.6       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.1984E+06   BRAKE HP =  0.1984E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.002    
+
+      UOS BLOCK B45      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   0  T = 298.1500  P =  300000.      V =  1.00000      Q = -203632.    
+
+      UOS BLOCK B43      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   375.6       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.1954E+06   BRAKE HP =  0.1954E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B46      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   0  T = 298.1500  P =  900000.      V =  1.00000      Q = -211703.    
+
+      UOS BLOCK B44      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   392.2       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.2281E+06   BRAKE HP =  0.2281E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B41      MODEL: MIXER                                             TIME =      0.24
+      NO. TEMP ITER =    4     TEMP =  354.585    
+      KODE = 1  NTRIAL =   4  T = 354.5852  P = 2.800000E+06  V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.24
+      ITER   0 For Specs:        HYDROFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   4  T = 298.1500  P =  100000.      V =  1.00000      Q =-1.046846E+07
+      SPEC   1 ERROR =  -6.1378     OLD X =   0.0000     NEW X =   2.7778    
+
+  LOOP $OLVER04 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     -61378.        TIME =      0.24
+
+      UOS BLOCK B42      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   425.7       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.1066E+08   BRAKE HP =  0.1066E+08
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.001    
+
+      UOS BLOCK B45      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   4  T = 298.1500  P =  300000.      V =  1.00000      Q =-1.066131E+07
+
+      UOS BLOCK B43      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   425.7       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.1068E+08   BRAKE HP =  0.1068E+08
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B46      MODEL: HEATER                                            TIME =      0.24
+      KODE = 2  NTRIAL =   4  T = 298.1500  P =  900000.      V =  1.00000      Q =-1.067427E+07
+
+      UOS BLOCK B44      MODEL: COMPR                                             TIME =      0.24
+      OUTLET TEMP =   454.4       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.1316E+08   BRAKE HP =  0.1316E+08
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.000    
+
+      UOS BLOCK B41      MODEL: MIXER                                             TIME =      0.24
+      NO. TEMP ITER =    5     TEMP =  449.421    
+      KODE = 1  NTRIAL =   7  T = 449.4209  P = 2.800000E+06  V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.24
+      ITER   2 For Specs:        HYDROFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = 2.301078E+06
+      SPEC   1 ERROR =   9993.9     OLD X =   2.7778     NEW X =  0.17050E-02
+
+  LOOP $OLVER04 ITER    2:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.99939E+08    TIME =      0.24
+
+      UOS BLOCK B42      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   375.4       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.2047E+06   BRAKE HP =  0.2047E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.002    
+
+      UOS BLOCK B45      MODEL: HEATER                                            TIME =      0.28
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  300000.      V =  1.00000      Q = -209831.    
+
+      UOS BLOCK B43      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   376.4       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.2018E+06   BRAKE HP =  0.2018E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B46      MODEL: HEATER                                            TIME =      0.28
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  900000.      V =  1.00000      Q = -217689.    
+
+      UOS BLOCK B44      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   393.1       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.2365E+06   BRAKE HP =  0.2365E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B41      MODEL: MIXER                                             TIME =      0.28
+      NO. TEMP ITER =    4     TEMP =  355.506    
+      KODE = 1  NTRIAL =   4  T = 355.5062  P = 2.800000E+06  V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.28
+      ITER   3 For Specs:        HYDROFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = 4.320140E-10
+      SPEC   1 ERROR =   0.0000                              X =  0.17050E-02
+
+  LOOP $OLVER04 ITER    3:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.28
+
+      CONVERGENCE BLOCK $OLVER03  METHOD: SECANT                                  TIME =      0.28
+      ITER   0 For Specs:        ETHYLFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q =  111727.    
+      SPEC   1 ERROR =  -6.3512     OLD X =  0.56279E-01 NEW X =   1.0464    
+
+  LOOP $OLVER03 ITER    1:   1 VARS NOT CONVERGED, MAX ERR/TOL     -63512.        TIME =      0.28
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.28
+      ITER   0 For Specs:        HYDROFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = 7.809299E-09
+
+      UOS BLOCK B42      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   374.6       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.3695E+07   BRAKE HP =  0.3695E+07
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.002    
+
+      UOS BLOCK B45      MODEL: HEATER                                            TIME =      0.28
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  300000.      V =  1.00000      Q =-3.792483E+06
+
+      UOS BLOCK B43      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   375.6       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.3639E+07   BRAKE HP =  0.3639E+07
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B46      MODEL: HEATER                                            TIME =      0.28
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  900000.      V =  1.00000      Q =-3.942347E+06
+
+      UOS BLOCK B44      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   392.3       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.4249E+07   BRAKE HP =  0.4249E+07
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B41      MODEL: MIXER                                             TIME =      0.28
+      NO. TEMP ITER =    5     TEMP =  387.674    
+      KODE = 1  NTRIAL =   8  T = 387.6742  P = 2.800000E+06  V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.28
+      ITER   1 For Specs:        HYDROFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = 7.809299E-09
+      SPEC   1 ERROR =   0.0000                              X =  0.17050E-02
+
+  LOOP $OLVER04 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.28
+
+      CONVERGENCE BLOCK $OLVER03  METHOD: SECANT                                  TIME =      0.28
+      ITER   2 For Specs:        ETHYLFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = -6010.41    
+      SPEC   1 ERROR =   3558.2     OLD X =   1.0464     NEW X =  0.58043E-01
+
+  LOOP $OLVER03 ITER    2:   1 VARS NOT CONVERGED, MAX ERR/TOL     0.35582E+08    TIME =      0.28
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.28
+      ITER   0 For Specs:        HYDROFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = 4.451584E-10
+
+      UOS BLOCK B42      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   375.4       OUTLET PRES =  0.3000E+06   INDICATED HP =  0.2109E+06   BRAKE HP =  0.2109E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.002    
+
+      UOS BLOCK B45      MODEL: HEATER                                            TIME =      0.28
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  300000.      V =  1.00000      Q = -216214.    
+
+      UOS BLOCK B43      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   376.3       OUTLET PRES =  0.9000E+06   INDICATED HP =  0.2080E+06   BRAKE HP =  0.2080E+06
+      POLYTROPIC EFFICIENCY =  0.8500    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B46      MODEL: HEATER                                            TIME =      0.28
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  900000.      V =  1.00000      Q = -224325.    
+
+      UOS BLOCK B44      MODEL: COMPR                                             TIME =      0.28
+      OUTLET TEMP =   393.1       OUTLET PRES =  0.2800E+07   INDICATED HP =  0.2436E+06   BRAKE HP =  0.2436E+06
+      POLYTROPIC EFFICIENCY =  0.7200    
+      ASME FAC =   1.003    
+
+      UOS BLOCK B41      MODEL: MIXER                                             TIME =      0.28
+      NO. TEMP ITER =    4     TEMP =  355.972    
+      KODE = 1  NTRIAL =   4  T = 355.9715  P = 2.800000E+06  V =  1.00000      Q =  0.00000    
+
+      CONVERGENCE BLOCK $OLVER04  METHOD: SECANT                                  TIME =      0.28
+      ITER   1 For Specs:        HYDROFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = 4.451584E-10
+      SPEC   1 ERROR =   0.0000                              X =  0.17050E-02
+
+  LOOP $OLVER04 ITER    1:     *** CONVERGED *** , MAX ERR/TOL      0.0000        TIME =      0.30
+
+      CONVERGENCE BLOCK $OLVER03  METHOD: SECANT                                  TIME =      0.30
+      ITER   3 For Specs:        ETHYLFLO
+      ---FLASH STREAM ETHYLENE:
+      KODE = 2  NTRIAL =   2  T = 298.1500  P =  100000.      V =  1.00000      Q = 4.451584E-10
+      SPEC   1 ERROR =  0.28422E-13                          X =  0.58043E-01
+
+  LOOP $OLVER03 ITER    3:     *** CONVERGED *** , MAX ERR/TOL     0.28422E-09    TIME =      0.30
+
+      UOS BLOCK B47      MODEL: HEATER                                            TIME =      0.30
+      KODE = 2  NTRIAL =   6  T = 373.1500  P = 2.800000E+06  V =  1.00000      Q =  113038.    
+
+      UOS BLOCK B48      MODEL: RSTOIC                                            TIME =      0.30
+      KODE = 2  NTRIAL =   4  T = 373.1500  P = 2.800000E+06  V =  0.00000      Q =-8.976423E+06
+
+      UOS BLOCK B49      MODEL: HEATER                                            TIME =      0.30
+      KODE = 2  NTRIAL =   3  T = 448.1500  P =  250000.      V =  1.00000      Q = 1.975004E+06
+
+      UOS BLOCK B50      MODEL: MIXER                                             TIME =      0.30
+      NO. TEMP ITER =    5     TEMP =  447.112    
+      KODE = 1  NTRIAL =   5  T = 447.1120  P =  250000.      V =  1.00000      Q =  0.00000    
+
+      UOS BLOCK B3       MODEL: RPLUG                                             TIME =      0.30
+        AT REACTOR EXIT :
+        LENGTH =   19.690      DIAMETER =   3.9390      RESIDENCE TIME =   273.28    
+        PROCESS STREAM T =    447.11     P =   0.25000E+06 H =  -0.14149E+08 V =    1.0000    
+
+      UOS BLOCK B4       MODEL: HEATER                                            TIME =      0.31
+      KODE = 2  NTRIAL =   3  T = 298.1500  P =  250000.      V = 4.136853E-02  Q =-3.511801E+06
+
+      UOS BLOCK B5       MODEL: FLASH2                                            TIME =      0.31
+      KODE = 1  NTRIAL =  13  T = 298.1500  P =  250000.      V = 4.136853E-02  Q =  0.00000    
+
+      UOS BLOCK B31      MODEL: MIXER                                             TIME =      0.31
+      NO. TEMP ITER =    4     TEMP =  313.146    
+      KODE = 1  NTRIAL =   5  T = 313.1910  P =  900000.      V = 3.683759E-04  Q =  0.00000    
+
+      GENERATING RESULTS FOR UOS BLOCK B7       MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B20      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B23      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B26      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B29      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B34      MODEL: PUMP                       TIME =      0.31
+      KODE = 5  NTRIAL =   4  T = 313.1500  P =  6801.93      V =  0.00000      Q = -94.1690    
+      VOL-FLOW   =  0.1131E-02 , DELTA P    =  0.3900E+07 , PUMP EFF   =  0.8500    
+      FLUID PWR  =   4412.     , BRAKE PWR  =   5191.     , ELEC PWR   =   5191.    
+      NPSH AVAIL =   94.89    
+
+      GENERATING RESULTS FOR UOS BLOCK B35      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B39      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B45      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B46      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B47      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B49      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B52      MODEL: HEATER                     TIME =      0.31
+
+      GENERATING RESULTS FOR UOS BLOCK B4       MODEL: HEATER                     TIME =      0.31
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =      0.31
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE CHECKING PHASE EQUILIBRIUM      
+      RESULTS FOR UNIT OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE CHECKING PHASE EQUILIBRIUM      
+      RESULTS FOR UNIT OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE CHECKING PHASE EQUILIBRIUM      
+      RESULTS FOR UNIT OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+      CHECKING PHASE EQUILIBRIUM RESULTS                                          TIME =      0.33
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE CHECKING PHASE EQUILIBRIUM      
+      RESULTS FOR UNIT OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE CHECKING PHASE EQUILIBRIUM      
+      RESULTS FOR UNIT OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE CHECKING PHASE EQUILIBRIUM      
+      RESULTS FOR UNIT OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE IN SEQUENCE MONITOR             
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE IN SEQUENCE MONITOR             
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE IN SEQUENCE MONITOR             
+                                                               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+RUN SAVED
+
+
+
+ *** SUMMARY OF ERRORS ***
+
+                  PHYSICAL
+                  PROPERTY  SYSTEM  SIMULATION
+ TERMINAL ERRORS      0        0         0
+   SEVERE ERRORS      0        0         0
+          ERRORS      0        0         0
+        WARNINGS     25        0         3
+
+ Report Writer entered                                                            Time =    508.17
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE GENERATING REPORT FOR UNIT      
+      OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE GENERATING REPORT FOR UNIT      
+      OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+  *   WARNING IN PHYSICAL PROPERTY SYSTEM WHILE GENERATING REPORT FOR UNIT      
+      OPERATIONS BLOCK: "B38" (MODEL: "RADFRAC")               (ES20.1)         
+      THE AMINE CONCENTRATION OF   51.0 WEIGHT PERCENT IS OUTSIDE THE VALID     
+      RANGE OF    5.0 TO   40.0 WEIGHT PERCENT.  THE AMINES OPTION SET WILL     
+      NOT BE USED.  CHAO-SEADER MODELS ARE USED INSTEAD.                        
+
+ Results generated                                                                Time =    508.23
